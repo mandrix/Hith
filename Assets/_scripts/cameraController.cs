@@ -14,8 +14,8 @@ public class cameraController : MonoBehaviour
     public Transform pivot;
 
     // PARA LIMITAR LA CAMARA
-    public float maxViewAngle;
-    public float minViewAngle;
+    public float maxViewAngle = 45;
+    public float minViewAngle = -30;
     public bool invertY;
 
 
