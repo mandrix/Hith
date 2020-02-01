@@ -25,13 +25,14 @@ public class sePuedeRecojer : MonoBehaviour
 	{
 		if (other.CompareTag(jugador.tag))
 		{
-			if (Input.GetKeyDown(KeyCode.Space))
+			if (Input.GetButtonDown("Fire1"))
 			{
 				Debug.Log("Item se recojió");
 				GameObject objeto_copia = Instantiate(gameObject, transform.position, transform.rotation);
 				objeto_copia.SetActive(false);
 
 				jugador.GetComponent<Inventario>().agregarAInventario(objeto_copia);
+				
 				Destroy(gameObject, 0.10f);
 			}
 		}
