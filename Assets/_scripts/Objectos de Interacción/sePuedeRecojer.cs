@@ -20,6 +20,9 @@ public class sePuedeRecojer : MonoBehaviour
 	private nombreDePiezas nombreDePieza;
 	[SerializeField]
 	private GameObject jugador;
+	[SerializeField]
+	[Range(0, 6)]
+	private float tiempoParaRecojer; 
 
 	private void OnTriggerStay(Collider other)
 	{
@@ -28,13 +31,20 @@ public class sePuedeRecojer : MonoBehaviour
 			if (Input.GetButtonDown("Fire1"))
 			{
 				Debug.Log("Item se recojió");
-				GameObject objeto_copia = Instantiate(gameObject, transform.position, transform.rotation);
-				objeto_copia.SetActive(false);
-
-				jugador.GetComponent<Inventario>().agregarAInventario(objeto_copia);
-				
-				Destroy(gameObject, 0.10f);
+				StartCoroutine(AgregarInverntarioEnumerator());
 			}
 		}
+	}
+
+	IEnumerator AgregarInverntarioEnumerator()
+	{
+		GameObject objeto_copia = Instantiate(gameObject, transform.position, transform.rotation);
+		objeto_copia.SetActive(false);
+
+		yield return new WaitForSeconds(tiempoParaRecojer);
+
+		jugador.GetComponent<Inventario>().agregarAInventario(objeto_copia);
+
+		Destroy(gameObject, 0.10f);
 	}
 }

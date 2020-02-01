@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class airTankLevel : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject airTank;
     [SerializeField]
     private float airLevel = 100;
     public float coef = 0.5f;
+    public float coef_copy;
 
     private Animator playerAnimator;
     private float initialYScale;
@@ -15,8 +16,9 @@ public class airTankLevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerAnimator = player.GetComponent<Animator>();
-        initialYScale = transform.localScale.y;
+        playerAnimator = GetComponent<Animator>();
+        initialYScale = airTank.transform.localScale.y;
+        coef_copy = coef;
     }
 
     // Update is called once per frame
@@ -31,9 +33,9 @@ public class airTankLevel : MonoBehaviour
         if (airLevel <= 0)
         {
             playerAnimator.SetTrigger("die");
-            player.GetComponent<movement>().enabled = false;
+            GetComponent<movement>().enabled = false;
             Debug.Log("jugador muerto");
-            Destroy(gameObject, 1);
+            Destroy(airTank, 1);
 
         }
         else
@@ -42,11 +44,12 @@ public class airTankLevel : MonoBehaviour
             {
                 // IS ALIVE
                 airLevel -= coef * Time.deltaTime;
-                transform.localScale = new Vector3(transform.localScale.x, (airLevel/100) * initialYScale, transform.localScale.z);
+                airTank.transform.localScale = new Vector3(airTank.transform.localScale.x, (airLevel/100) * initialYScale, airTank.transform.localScale.z);
             }
             catch (UnityException e)
             {
                 Debug.LogError(e.Message);
+                airLevel = 0;
             }
             
         }
@@ -55,11 +58,23 @@ public class airTankLevel : MonoBehaviour
     public void addAir(float health)
     {
         airLevel += health;
+
+        if(airLevel > 100)
+        {
+            airLevel = 100;
+        }
     }
 
     public void reduceAir(float damage)
     {
         airLevel -= damage;
+
+        Debug.Log(damage);
+
+        if (airLevel < 0)
+        {
+            airLevel = 0;
+        }
     }
 
 }
