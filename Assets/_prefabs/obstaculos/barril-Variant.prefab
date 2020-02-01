@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 5605860174039259879, guid: a54926582d986d04b832953d300c860c,
         type: 3}
       propertyPath: m_Name
-      value: barril2
+      value: barril2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8905690109518047476, guid: a54926582d986d04b832953d300c860c,
         type: 3}
@@ -20,12 +20,12 @@ PrefabInstance:
     - target: {fileID: 8905690109518047476, guid: a54926582d986d04b832953d300c860c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8905690109518047476, guid: a54926582d986d04b832953d300c860c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.029
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8905690109518047476, guid: a54926582d986d04b832953d300c860c,
         type: 3}
