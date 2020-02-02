@@ -78,7 +78,17 @@ public class airTankLevel : MonoBehaviour
         }
     }
 
-    public void addAir(float health)
+	public float getAirLevel()
+	{
+		return airLevel;
+	}
+
+	public void setAirLevel(float _airlevel)
+	{
+		airLevel = _airlevel;
+	}
+
+	public void addAir(float health)
     {
         airLevel += health;
 

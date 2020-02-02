@@ -28,7 +28,8 @@ public class sePuedeRecojer : MonoBehaviour
         vidrio,
         vidrio2,
         naveatras,
-        navedelantera
+        navedelantera,
+        lore
     };
 
     [SerializeField]
@@ -90,9 +91,16 @@ public class sePuedeRecojer : MonoBehaviour
 
         yield return new WaitForSeconds(tiempoParaRecojer);
 
-        jugador.GetComponent<Inventario>().agregarAInventario(objeto_copia);
-        // Debug.Log(string.Format("pieza: {0} nave: {1}", nombreDePieza, nave));
-        nave.GetComponent<armarNave>().armar(nombreDePieza);
+        if(nombreDePieza != nombreDePiezas.lore)
+        {
+            jugador.GetComponent<Inventario>().agregarAInventario(objeto_copia);
+            nave.GetComponent<armarNave>().armar(nombreDePieza);
+        }
+        else
+        {
+            jugador.GetComponent<Inventario>().agregarAInventarioLore(objeto_copia);
+            GetComponent<lore>().showLore();
+        }
 
         // AGREGADO POR JUAN
         try
@@ -128,5 +136,10 @@ public class sePuedeRecojer : MonoBehaviour
         {
             audioS.Stop();
         }
+    }
+
+    public nombreDePiezas GetNombreDePieza()
+    {
+        return nombreDePieza;
     }
 }
