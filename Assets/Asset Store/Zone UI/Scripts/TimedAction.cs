@@ -13,6 +13,8 @@ namespace Michsky.UI.Zone
         [Header("TIMER EVENT")]
         public UnityEvent timerAction;
 
+		public GameObject logo;
+
         IEnumerator TimedEvent()
         {
             yield return new WaitForSeconds(timer);
@@ -27,6 +29,7 @@ namespace Michsky.UI.Zone
         public void StopIEnumerator ()
         {
             StopCoroutine("TimedEvent");
+			logo.SetActive(false);
         }
     }
 }
