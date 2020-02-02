@@ -10,10 +10,25 @@ public class sePuedeRecojer : MonoBehaviour
 
 	public enum nombreDePiezas // your custom enumeration
 	{
-		motor,
+		puerta1,
+		pistola4,
+		pistola3,
+		pistola2,
+		pistola1,
 		ala1,
 		ala2,
-		rampa
+		motor4,
+		motor3,
+		flaps2,
+		motor2,
+		puerta2,
+		motor1,
+		flaps1,
+		rampa,
+		vidrio,
+		vidrio2,
+		naveatras,
+		navedelantera
 	};
 
 	[SerializeField]
@@ -22,15 +37,42 @@ public class sePuedeRecojer : MonoBehaviour
 	private GameObject jugador;
 	[SerializeField]
 	[Range(0, 6)]
-	private float tiempoParaRecojer; 
+	private float tiempoParaRecojer;
+	[SerializeField]
+	private GameObject nave;
+	[SerializeField]
+	private float minDistanceForHighlight;
+
+	private bool flag = false;
+
+	private void Update()
+	{
+		minDistanceForHighlight = 20f;
+		float distance = Vector3.Distance(jugador.transform.position, transform.position);
+
+		if(distance <= minDistanceForHighlight)
+		{
+			foreach(Transform child in transform)
+			{
+				child.gameObject.SetActive(true);
+			}
+		}
+		else
+		{
+			foreach (Transform child in transform)
+			{
+				child.gameObject.SetActive(false);
+			}
+		}
+	}
 
 	private void OnTriggerStay(Collider other)
 	{
 		if (other.CompareTag(jugador.tag))
 		{
-			if (Input.GetButtonDown("Fire1"))
+			if (Input.GetButtonDown("Fire1") && !flag)
 			{
-				Debug.Log("Item se recojió");
+				flag = true;
 				StartCoroutine(AgregarInverntarioEnumerator());
 			}
 		}
@@ -44,6 +86,8 @@ public class sePuedeRecojer : MonoBehaviour
 		yield return new WaitForSeconds(tiempoParaRecojer);
 
 		jugador.GetComponent<Inventario>().agregarAInventario(objeto_copia);
+		Debug.Log(string.Format("pieza: {0} nave: {1}", nombreDePieza, nave));
+		nave.GetComponent<armarNave>().armar(nombreDePieza);
 
 		Destroy(gameObject, 0.10f);
 	}

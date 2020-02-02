@@ -34,7 +34,6 @@ public class airTankLevel : MonoBehaviour
         {
             playerAnimator.SetTrigger("die");
             GetComponent<movement>().enabled = false;
-            Debug.Log("jugador muerto");
             Destroy(airTank, 1);
 
         }
@@ -68,8 +67,6 @@ public class airTankLevel : MonoBehaviour
     public void reduceAir(float damage)
     {
         airLevel -= damage;
-
-        Debug.Log(damage);
 
         if (airLevel < 0)
         {
