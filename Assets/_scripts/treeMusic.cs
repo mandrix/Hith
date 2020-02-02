@@ -24,8 +24,8 @@ public class treeMusic : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        
-    }
+		
+	}
 
     // Update is called once per frame
     void Update()
@@ -68,6 +68,18 @@ public class treeMusic : MonoBehaviour
 		{
 			player.GetComponent<airTankLevel>().addAir(oxygenToAdd);
 			inRadiusToGetOxygen = true;
+
+			//Saving
+			Debug.Log("Saved");
+			ES3.Save<Vector3>("user-v3", player.transform.position);
+			ES3.Save<float>("user-oxygen", player.GetComponent<airTankLevel>().getAirLevel());
+			List<sePuedeRecojer.nombreDePiezas> piezas = new List<sePuedeRecojer.nombreDePiezas>();
+			foreach(GameObject obj in player.GetComponent<Inventario>().getShipParts())
+			{
+				piezas.Add(obj.GetComponent<sePuedeRecojer>().GetNombreDePieza());
+			}
+			ES3.Save<List<sePuedeRecojer.nombreDePiezas>>("user-ship-parts", piezas);
+
 		}
 	}
 
