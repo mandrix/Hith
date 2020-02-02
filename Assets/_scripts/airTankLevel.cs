@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class airTankLevel : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class airTankLevel : MonoBehaviour
     public AudioSource deathTheme;
     private AudioSource[] allAudioSources;
     private bool isPlayerDeath = false;
+
+    public GameObject camera;
+    public GameObject gameOverUi;
+    private int tiempoAnimacionMuerte = 6;
+    private int tiempoVentanaMuerte = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -41,13 +47,17 @@ public class airTankLevel : MonoBehaviour
                 isPlayerDeath = true;
 
                 GetComponent<movement>().enabled = false;
-                playerAnimator.SetTrigger("die");
+                camera.GetComponent<cameraController>().enabled = false;
 
                 // DETENER TODOS LOS AUDIOS Y REPRODUCIR EL DE MUERTE
                 // GetComponentsInChildren
                 stopAllAudio();
                 deathTheme.volume = 1.0f;
+
+                playerAnimator.SetTrigger("die");
                 deathTheme.Play();
+
+                StartCoroutine(mostrarGameOverUI());
 
                 Destroy(airTank, 1);
             }
@@ -78,17 +88,17 @@ public class airTankLevel : MonoBehaviour
         }
     }
 
-	public float getAirLevel()
-	{
-		return airLevel;
-	}
+    public float getAirLevel()
+    {
+        return airLevel;
+    }
 
-	public void setAirLevel(float _airlevel)
-	{
-		airLevel = _airlevel;
-	}
+    public void setAirLevel(float _airlevel)
+    {
+        airLevel = _airlevel;
+    }
 
-	public void addAir(float health)
+    public void addAir(float health)
     {
         airLevel += health;
 
@@ -108,4 +118,17 @@ public class airTankLevel : MonoBehaviour
         }
     }
 
+
+    IEnumerator mostrarGameOverUI()
+    {
+        yield return new WaitForSeconds(tiempoAnimacionMuerte);
+        gameOverUi.SetActive(true);
+        StartCoroutine(cambiarEscena());
+    }
+
+    IEnumerator cambiarEscena()
+    {
+        yield return new WaitForSeconds(tiempoVentanaMuerte);
+        SceneManager.LoadScene("Inicio");
+    }
 }

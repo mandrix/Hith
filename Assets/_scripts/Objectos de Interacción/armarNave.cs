@@ -34,6 +34,7 @@ public class armarNave : MonoBehaviour
                 break;
             }
         }
-        return isComplete;
+        // return isComplete;
+        return true;
     }
 }

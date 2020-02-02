@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider))]
 public class sePuedeRecojer : MonoBehaviour
@@ -50,6 +51,10 @@ public class sePuedeRecojer : MonoBehaviour
     public AudioSource winTheme;
     private AudioSource[] allAudioSources;
     private bool winState = false;
+    private int esperaBaile = 20;
+    private int tiempoVentaWin = 5;
+    public GameObject winStateUI;
+
 
     private void Update()
     {
@@ -91,7 +96,7 @@ public class sePuedeRecojer : MonoBehaviour
 
         yield return new WaitForSeconds(tiempoParaRecojer);
 
-        if(nombreDePieza != nombreDePiezas.lore)
+        if (nombreDePieza != nombreDePiezas.lore)
         {
             jugador.GetComponent<Inventario>().agregarAInventario(objeto_copia);
             nave.GetComponent<armarNave>().armar(nombreDePieza);
@@ -106,7 +111,7 @@ public class sePuedeRecojer : MonoBehaviour
         try
         {
             int piezasColectadas = jugador.GetComponent<Inventario>().getPiezasColectadasConteo();
-            Debug.Log(string.Format("{0} de {1}", piezasColectadas, 18));
+            // Debug.Log(string.Format("{0} de {1}", piezasColectadas, 18));
             if (nave.GetComponent<armarNave>().estaCompleta())
             {
                 winState = true;
@@ -115,6 +120,8 @@ public class sePuedeRecojer : MonoBehaviour
                 jugador.GetComponent<Animator>().SetBool("dance", true);
                 winTheme.Play();
                 winTheme.volume = 1.0f;
+
+                StartCoroutine(esperaAnimacionBaile());
 
                 Debug.Log("HA GANADO");
             }
@@ -141,5 +148,20 @@ public class sePuedeRecojer : MonoBehaviour
     public nombreDePiezas GetNombreDePieza()
     {
         return nombreDePieza;
+    }
+
+    IEnumerator esperaAnimacionBaile()
+    {
+        Debug.Log(esperaBaile);
+        yield return new WaitForSeconds(esperaBaile);
+        winStateUI.SetActive(true);
+        StartCoroutine(cambiarEscena());
+        Debug.Log(tiempoVentaWin);
+    }
+
+    IEnumerator cambiarEscena()
+    {
+        yield return new WaitForSeconds(tiempoVentaWin);
+        SceneManager.LoadScene("Inicio");
     }
 }

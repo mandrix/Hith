@@ -19,12 +19,12 @@ public class Inventario : MonoBehaviour
         float oxygen = ES3.Load<float>("user-oxygen", 100);
         List<sePuedeRecojer.nombreDePiezas> ship_parts = ES3.Load<List<sePuedeRecojer.nombreDePiezas>>("user-ship-parts", new List<sePuedeRecojer.nombreDePiezas>());
         List<string> collectables = ES3.Load<List<string>>("user-collectables", new List<string>());
-        Debug.Log(position);
-        Debug.Log(oxygen);
-        Debug.Log(collectables);
+        //Debug.Log(position);
+        //Debug.Log(oxygen);
+        //Debug.Log(collectables);
         foreach(sePuedeRecojer.nombreDePiezas part in ship_parts)
         {
-            Debug.Log(string.Format("part: {0}  nombre: {1}", part, part));
+            //Debug.Log(string.Format("part: {0}  nombre: {1}", part, part));
             nave.GetComponent<armarNave>().armar(part);
         }
 
