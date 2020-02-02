@@ -13,6 +13,10 @@ public class airTankLevel : MonoBehaviour
     private Animator playerAnimator;
     private float initialYScale;
 
+    public AudioSource deathTheme;
+    private AudioSource[] allAudioSources;
+    private bool isPlayerDeath = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,28 +33,48 @@ public class airTankLevel : MonoBehaviour
 
     void LateUpdate()
     {
-        // DEATH STATE
-        if (airLevel <= 0)
+        if (!isPlayerDeath)
         {
-            playerAnimator.SetTrigger("die");
-            GetComponent<movement>().enabled = false;
-            Destroy(airTank, 1);
+            // DEATH STATE
+            if (airLevel <= 0)
+            {
+                isPlayerDeath = true;
 
+                GetComponent<movement>().enabled = false;
+                playerAnimator.SetTrigger("die");
+
+                // DETENER TODOS LOS AUDIOS Y REPRODUCIR EL DE MUERTE
+                // GetComponentsInChildren
+                stopAllAudio();
+                deathTheme.volume = 1.0f;
+                deathTheme.Play();
+
+                Destroy(airTank, 1);
+            }
+            else
+            {
+                try
+                {
+                    // IS ALIVE
+                    airLevel -= coef * Time.deltaTime;
+                    airTank.transform.localScale = new Vector3(airTank.transform.localScale.x, (airLevel / 100) * initialYScale, airTank.transform.localScale.z);
+                }
+                catch (UnityException e)
+                {
+                    Debug.LogError(e.Message);
+                    airLevel = 0;
+                }
+
+            }
         }
-        else
+    }
+
+    void stopAllAudio()
+    {
+        allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (AudioSource audioS in allAudioSources)
         {
-            try
-            {
-                // IS ALIVE
-                airLevel -= coef * Time.deltaTime;
-                airTank.transform.localScale = new Vector3(airTank.transform.localScale.x, (airLevel/100) * initialYScale, airTank.transform.localScale.z);
-            }
-            catch (UnityException e)
-            {
-                Debug.LogError(e.Message);
-                airLevel = 0;
-            }
-            
+            audioS.Stop();
         }
     }
 
@@ -58,7 +82,7 @@ public class airTankLevel : MonoBehaviour
     {
         airLevel += health;
 
-        if(airLevel > 100)
+        if (airLevel > 100)
         {
             airLevel = 100;
         }

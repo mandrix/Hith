@@ -45,6 +45,11 @@ public class sePuedeRecojer : MonoBehaviour
 
     private bool flag = false;
 
+    // AGREGADO X JUAN
+    public AudioSource winTheme;
+    private AudioSource[] allAudioSources;
+    private bool winState = false;
+
     private void Update()
     {
         // minDistanceForHighlight = 20f;
@@ -86,18 +91,23 @@ public class sePuedeRecojer : MonoBehaviour
         yield return new WaitForSeconds(tiempoParaRecojer);
 
         jugador.GetComponent<Inventario>().agregarAInventario(objeto_copia);
-        Debug.Log(string.Format("pieza: {0} nave: {1}", nombreDePieza, nave));
+        // Debug.Log(string.Format("pieza: {0} nave: {1}", nombreDePieza, nave));
         nave.GetComponent<armarNave>().armar(nombreDePieza);
 
         // AGREGADO POR JUAN
         try
         {
             int piezasColectadas = jugador.GetComponent<Inventario>().getPiezasColectadasConteo();
-            Debug.Log(string.Format("{0} de {1}", piezasColectadas, 17));
+            Debug.Log(string.Format("{0} de {1}", piezasColectadas, 18));
             if (nave.GetComponent<armarNave>().estaCompleta())
             {
-                jugador.GetComponent<Animator>().SetBool("dance", true);
+                winState = true;
+                stopAllAudio();
                 jugador.GetComponent<movement>().enabled = false;
+                jugador.GetComponent<Animator>().SetBool("dance", true);
+                winTheme.Play();
+                winTheme.volume = 1.0f;
+
                 Debug.Log("HA GANADO");
             }
         }
@@ -109,5 +119,14 @@ public class sePuedeRecojer : MonoBehaviour
 
 
         Destroy(gameObject, 0.10f);
+    }
+
+    void stopAllAudio()
+    {
+        allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (AudioSource audioS in allAudioSources)
+        {
+            audioS.Stop();
+        }
     }
 }
