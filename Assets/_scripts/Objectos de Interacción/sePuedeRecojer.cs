@@ -110,20 +110,23 @@ public class sePuedeRecojer : MonoBehaviour
         // AGREGADO POR JUAN
         try
         {
-            int piezasColectadas = jugador.GetComponent<Inventario>().getPiezasColectadasConteo();
-            // Debug.Log(string.Format("{0} de {1}", piezasColectadas, 18));
-            if (nave.GetComponent<armarNave>().estaCompleta())
+            if (nombreDePieza != nombreDePiezas.lore)
             {
-                winState = true;
-                stopAllAudio();
-                jugador.GetComponent<movement>().enabled = false;
-                jugador.GetComponent<Animator>().SetBool("dance", true);
-                winTheme.Play();
-                winTheme.volume = 1.0f;
+                // int piezasColectadas = jugador.GetComponent<Inventario>().getPiezasColectadasConteo();
+                // Debug.Log(string.Format("{0} de {1}", piezasColectadas, 18));
+                if (nave.GetComponent<armarNave>().estaCompleta())
+                {
+                    winState = true;
+                    stopAllAudio();
+                    jugador.GetComponent<movement>().enabled = false;
+                    jugador.GetComponent<Animator>().SetBool("dance", true);
+                    winTheme.Play();
+                    winTheme.volume = 1.0f;
 
-                StartCoroutine(esperaAnimacionBaile());
+                    StartCoroutine(esperaAnimacionBaile());
 
-                Debug.Log("HA GANADO");
+                    // Debug.Log("HA GANADO");
+                }
             }
         }
         catch (UnityException e)
