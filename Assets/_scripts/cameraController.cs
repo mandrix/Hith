@@ -14,8 +14,8 @@ public class cameraController : MonoBehaviour
     public Transform pivot;
 
     // PARA LIMITAR LA CAMARA
-    public float maxViewAngle;
-    public float minViewAngle;
+    public float maxViewAngle = 45;
+    public float minViewAngle = -30;
     public bool invertY;
 
 
@@ -66,11 +66,11 @@ public class cameraController : MonoBehaviour
         // LIMIT UP/DOWN CAMERA ROTATION
         if (pivot.rotation.eulerAngles.x > maxViewAngle && pivot.rotation.eulerAngles.x < 180f)
         {
-            pivot.rotation = Quaternion.Euler(maxViewAngle, 0.0f, 0.0f);
+            // pivot.rotation = Quaternion.Euler(maxViewAngle, 0.0f, 0.0f);
         }
         if (pivot.rotation.eulerAngles.x > 180f && pivot.rotation.eulerAngles.x < 360f + minViewAngle)
         {
-            pivot.rotation = Quaternion.Euler(360f + minViewAngle, 0.0f, 0.0f);
+            // pivot.rotation = Quaternion.Euler(360f + minViewAngle, 0.0f, 0.0f);
         }
 
         // MOVE THE CAMERA BASED ON THE CURRENT ROTATION OF THE TARGET AND THE ORIGINAL OFFSET

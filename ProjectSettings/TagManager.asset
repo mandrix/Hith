@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - partes_de_nave
+  - gameOverUI
   layers:
   - Default
   - TransparentFX
