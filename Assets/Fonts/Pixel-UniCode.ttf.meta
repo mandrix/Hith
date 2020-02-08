@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b8a4eb9f7a64a3b40939a2eca96010e1
+guid: f64dbf648416af64f8f08e6f71fa572e
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Pixelnauts
+  fontName: Pixel UniCode
   fontNames:
-  - Pixelnauts
+  - Pixel UniCode
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
