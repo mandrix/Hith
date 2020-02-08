@@ -38,6 +38,8 @@ public class movement : MonoBehaviour
     [Range(0, 5)]
     [Tooltip("Cuanto oxígeno se usa al utilizar el botón de recoger")]
     private float airTankUsageRun = 3;
+
+    private bool actionFlag = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,11 @@ public class movement : MonoBehaviour
         float yStore = moveDirection.y;
         vAxis = Input.GetAxis("Vertical");
         hAxis = Input.GetAxis("Horizontal");
+
+        if (vAxis!=0 || hAxis!=0) {
+            cancelAnimations();
+            actionFlag = true;
+        }
         float coef = GetComponent<airTankLevel>().coef_copy;
         bool isRunning = false;
 
@@ -68,25 +75,29 @@ public class movement : MonoBehaviour
         moveDirection = moveDirection.normalized * (isRunning ? movementSpeed * runSpeedMultiplier : movementSpeed);
         moveDirection.y = yStore;
 
-        if (characterController.isGrounded)
-        {
+        if (characterController.isGrounded && actionFlag)
+        { 
             moveDirection.y = 0.0f;
-            anim.SetBool("gathering", false);
-            anim.SetBool("dance", false);
+            cancelAnimations();
+            bool newActionFlag = true;
             if (Input.GetButtonDown("Jump"))
             {
                 moveDirection.y = jumpForce;
+                newActionFlag = false;
             }
 
-            else if (Input.GetButtonDown("Fire1"))
+            else if (Input.GetButtonDown("Fire1") )
             {
+                newActionFlag = false;
                 anim.SetBool("gathering", true);
                 GetComponent<airTankLevel>().reduceAir(airTankUsage);
             }
             else if (Input.GetButtonDown("Fire2"))
             {
                 anim.SetBool("dance", true);
+                newActionFlag = false;
             }
+            actionFlag = newActionFlag;
         }
 
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
@@ -100,47 +111,10 @@ public class movement : MonoBehaviour
 
         anim.SetBool("isGrounded", characterController.isGrounded);
         anim.SetFloat("vSpeed", isRunning ? vAxis * 2 : vAxis);
+    }
 
-
-
-        //anim.SetFloat("speed", (Mathf.Abs(vAxis) + Mathf.Abs(hAxis)));
-
-
-        /*
-        float inputV = Input.GetAxis("Vertical");
-        float inputH = Input.GetAxis("Horizontal");
-        anim.SetFloat("velX", inputH);
-        bool isRunning = false;
-
-        // ESTA CORRIENDO Y ESTA TOCANDO EL SUELO
-        if (Input.GetButton("Run") && characterController.isGrounded)
-        {
-            isRunning = true;
-            inputV *= 2;
-        }
-
-        // moveDirection = new Vector3(Input.GetAxis("Horizontal") * movementSpeed, moveDirection.y, Input.GetAxis("Vertical") * movementSpeed);
-        float yStore = moveDirection.y;
-        moveDirection = (transform.forward * inputV) + (transform.right * inputH); // , transform.up * Input.GetAxis("Horizontal")
-        moveDirection = moveDirection.normalized * (isRunning ? movementSpeed * 1.5f : movementSpeed);
-        moveDirection.y = yStore;
-
-        if (characterController.isGrounded)
-        {
-            moveDirection.y = 0.0f;
-            if (Input.GetButton("Jump"))
-            {
-                moveDirection.y = jumpForce;
-            }
-        }
-
-        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
-
-
-        // Move the controller
-        characterController.Move(moveDirection * Time.deltaTime);
-        // SETEAR LA ANIMACION
-        anim.SetFloat("velY", inputV);
-        */
+    private void cancelAnimations() {
+        anim.SetBool("gathering", false);
+        anim.SetBool("dance", false);
     }
 }
