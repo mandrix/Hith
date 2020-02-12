@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class switchScenes : MonoBehaviour
 {
+
+    private void Start()
+    {
+        cameraOptions.cursorUnlock();
+    }
+
     public void switchScene(string name)
 	{
 		SceneManager.LoadScene(name);
