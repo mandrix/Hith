@@ -8,7 +8,7 @@ public class airTankLevel : MonoBehaviour
     public GameObject airTank;
     [SerializeField]
     private float airLevel = 100;
-    public float coef = 0.5f;
+    public float coef = 0.1f;
     public float coef_copy;
 
     private Animator playerAnimator;
@@ -30,13 +30,7 @@ public class airTankLevel : MonoBehaviour
         initialYScale = airTank.transform.localScale.y;
         coef_copy = coef;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    
     void LateUpdate()
     {
         if (!isPlayerDeath)
@@ -79,7 +73,7 @@ public class airTankLevel : MonoBehaviour
         }
     }
 
-    void stopAllAudio()
+    private void stopAllAudio()
     {
         allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
         foreach (AudioSource audioS in allAudioSources)

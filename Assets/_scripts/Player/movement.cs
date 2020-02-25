@@ -5,7 +5,7 @@ using UnityEngine;
 public class movement : MonoBehaviour
 {
     [Header("Variables")]
-    public float movementSpeed = 10.0f;
+    public float movementSpeed;
     [Range(0,4)]
     public float runSpeedMultiplier = 1.5f;
     public float jumpForce = 10.0f;
@@ -31,15 +31,16 @@ public class movement : MonoBehaviour
     [Space]
     [Header("Air tank variables")]
     [SerializeField]
-    [Range(0, 15)]
-    [Tooltip("Cuanto oxígeno se usa al utilizar el botón de recoger")]
-    private int airTankUsage = 7;
-    [SerializeField]
     [Range(0, 5)]
     [Tooltip("Cuanto oxígeno se usa al utilizar el botón de recoger")]
-    private float airTankUsageRun = 3;
+    public float airTankUsage;
+    [SerializeField]
+    [Range(0, 5)]
+    [Tooltip("Cuanto oxígeno se usa al utilizar el botón de correr")]
+    public float airTankUsageRun = 1.1f;
 
     private bool actionFlag = true;
+    bool isRunning = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +60,7 @@ public class movement : MonoBehaviour
             actionFlag = true;
         }
         float coef = GetComponent<airTankLevel>().coef_copy;
-        bool isRunning = false;
+        isRunning = false;
 
         if (Input.GetButton("Run") && characterController.isGrounded)
         {
