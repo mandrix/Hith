@@ -97,14 +97,14 @@ public class sePuedeRecojer : MonoBehaviour
         yield return new WaitForSeconds(tiempoParaRecojer);
 
         if (nombreDePieza != nombreDePiezas.lore)
-        {
-            jugador.GetComponent<Inventario>().agregarAInventario(objeto_copia);
+		{ 
             nave.GetComponent<armarNave>().armar(nombreDePieza);
         }
         else
         {
-            jugador.GetComponent<Inventario>().agregarAInventarioLore(objeto_copia);
-            GetComponent<lore>().showLore();
+			jugador.GetComponent<Inventario>().agregarAInventarioLore(objeto_copia.GetComponent<lore>().getLoreText());
+			jugador.GetComponent<Inventario>().saveLore();
+			GetComponent<lore>().showLore();
         }
 
         // AGREGADO POR JUAN
@@ -113,7 +113,6 @@ public class sePuedeRecojer : MonoBehaviour
             if (nombreDePieza != nombreDePiezas.lore)
             {
                 // int piezasColectadas = jugador.GetComponent<Inventario>().getPiezasColectadasConteo();
-                // Debug.Log(string.Format("{0} de {1}", piezasColectadas, 18));
                 if (nave.GetComponent<armarNave>().estaCompleta())
                 {
                     winState = true;
@@ -125,7 +124,6 @@ public class sePuedeRecojer : MonoBehaviour
 
                     StartCoroutine(esperaAnimacionBaile());
 
-                    // Debug.Log("HA GANADO");
                 }
             }
         }
@@ -155,11 +153,9 @@ public class sePuedeRecojer : MonoBehaviour
 
     IEnumerator esperaAnimacionBaile()
     {
-        Debug.Log(esperaBaile);
         yield return new WaitForSeconds(esperaBaile);
         winStateUI.SetActive(true);
         StartCoroutine(cambiarEscena());
-        Debug.Log(tiempoVentaWin);
     }
 
     IEnumerator cambiarEscena()

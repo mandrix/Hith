@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class switchScenes : MonoBehaviour
 {
+	private ES3File es3File;
 
-    private void Start()
+	private void Start()
     {
-        cameraOptions.cursorUnlock();
+		es3File = new ES3File("save.es3");
+
+		cameraOptions.cursorUnlock();
     }
 
     public void switchScene(string name)
@@ -18,9 +21,9 @@ public class switchScenes : MonoBehaviour
 
 	public void switchSceneAndRemoveSave(string name)
 	{
-		ES3.Save<Vector3>("user-v3", Vector3.zero);
-		ES3.Save<float>("user-oxygen", 100f);
-		ES3.Save<List<sePuedeRecojer.nombreDePiezas>>("user-ship-parts", new List<sePuedeRecojer.nombreDePiezas>());
+		es3File.Save<Vector3>("user-v3", Vector3.zero);
+		es3File.Save<float>("user-oxygen", 100f);
+		es3File.Save<List<sePuedeRecojer.nombreDePiezas>>("user-ship-parts", new List<sePuedeRecojer.nombreDePiezas>());
 		SceneManager.LoadScene(name);
 	}
 }
