@@ -922,12 +922,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+  runSpeedMultiplier: 1.5
   jumpForce: 10
   gravityScale: 2
   pivot: {fileID: 0}
   rotateSpeed: 10
   vAxis: 0
   hAxis: 0
+  airTankUsage: 0
+  airTankUsageRun: 1.1
 --- !u!114 &4902997410208233234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,6 +944,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   piezasColectadas: []
+  loreColectado: []
+  nave: {fileID: 0}
 --- !u!136 &1101410932
 CapsuleCollider:
   m_ObjectHideFlags: 0
