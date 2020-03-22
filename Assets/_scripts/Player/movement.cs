@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    [Header("Variables")]
+	#region variables
+	[Header("Variables")]
     public float movementSpeed;
     [Range(0,4)]
     public float runSpeedMultiplier = 1.5f;
@@ -41,8 +41,16 @@ public class movement : MonoBehaviour
 
     private bool actionFlag = true;
     bool isRunning = false;
-    // Start is called before the first frame update
-    void Start()
+
+	// Pause menu variables
+	public bool paused = false;
+	[SerializeField]
+	[Space]
+	private GameObject pauseMenu;
+
+	#endregion
+	#region Unity Methods
+	void Start()
     {
         characterController = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
@@ -51,6 +59,8 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		shouldPause();
+
         float yStore = moveDirection.y;
         vAxis = Input.GetAxis("Vertical");
         hAxis = Input.GetAxis("Horizontal");
@@ -113,9 +123,48 @@ public class movement : MonoBehaviour
         anim.SetBool("isGrounded", characterController.isGrounded);
         anim.SetFloat("vSpeed", isRunning ? vAxis * 2 : vAxis);
     }
+	#endregion
 
-    private void cancelAnimations() {
+	private void shouldPause()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape) && !paused)
+		{
+			pauseGame();
+		}else if (Input.GetKeyDown(KeyCode.Escape)){
+			unpauseGame();
+		}
+	}
+
+	private void cancelAnimations() {
         anim.SetBool("gathering", false);
         anim.SetBool("dance", false);
     }
+
+	public void pauseGame()
+	{
+		cameraOptions.cursorUnlock();
+		pauseMenu.SetActive(true);
+		paused = true;
+		Time.timeScale = 0f;
+	}
+
+	public void unpauseGame()
+	{
+		cameraOptions.cursorLock();
+		pauseMenu.SetActive(false);
+		paused = false;
+		Time.timeScale = 1f;
+	}
+
+	public void reloadScene()
+	{
+		unpauseGame();
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
+	public void goToMainMenu()
+	{
+		unpauseGame();
+		SceneManager.LoadScene("Scenes/Inicio");
+	}
 }
