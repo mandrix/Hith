@@ -6,6 +6,7 @@ TagManager:
   tags:
   - partes_de_nave
   - gameOverUI
+  - window
   layers:
   - Default
   - TransparentFX
