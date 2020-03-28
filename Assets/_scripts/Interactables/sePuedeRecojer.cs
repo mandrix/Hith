@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Collider))]
 public class sePuedeRecojer : MonoBehaviour
 {
-    // Este script ayuda en que si el jugador está en el rango del collider de este objeto
-    // le permite presionar espacio y poder recolectar la pieza de la nave espacial
-
-    public enum nombreDePiezas // your custom enumeration
+	// Este script ayuda en que si el jugador está en el rango del collider de este objeto
+	// le permite presionar espacio y poder recolectar la pieza de la nave espacial
+	#region Variables
+	public enum nombreDePiezas // your custom enumeration
     {
         puerta1,
         pistola4,
@@ -46,6 +46,10 @@ public class sePuedeRecojer : MonoBehaviour
     private float minDistanceForHighlight;
 
     private bool flag = false;
+	public bool PickedUp
+	{
+		get { return flag; }
+	}
 
     // AGREGADO X JUAN
     public AudioSource winTheme;
@@ -54,10 +58,16 @@ public class sePuedeRecojer : MonoBehaviour
     private int esperaBaile = 20;
     private int tiempoVentaWin = 5;
     public GameObject winStateUI;
+	#endregion
 
-
-    private void Update()
+	#region Unity Methods
+	private void Update()
     {
+		if (jugador.GetComponent<Pickup>().canPickup && flag)
+		{
+			AgregarInverntario();
+		}
+
         // minDistanceForHighlight = 20f;
         float distance = Vector3.Distance(jugador.transform.position, transform.position);
 
@@ -84,17 +94,22 @@ public class sePuedeRecojer : MonoBehaviour
             if (Input.GetButtonDown("Fire1") && !flag)
             {
                 flag = true;
-                StartCoroutine(AgregarInverntarioEnumerator());
             }
         }
     }
 
-    IEnumerator AgregarInverntarioEnumerator()
-    {
-        GameObject objeto_copia = Instantiate(gameObject, transform.position, transform.rotation);
-        objeto_copia.SetActive(false);
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.CompareTag(jugador.tag))
+		{
+			flag = false;
+		}
+	}
+	#endregion
 
-        yield return new WaitForSeconds(tiempoParaRecojer);
+	#region Custom methods
+	void AgregarInverntario()
+    {
 
         if (nombreDePieza != nombreDePiezas.lore)
 		{ 
@@ -102,7 +117,7 @@ public class sePuedeRecojer : MonoBehaviour
         }
         else
         {
-			jugador.GetComponent<Inventario>().agregarAInventarioLore(objeto_copia.GetComponent<lore>().getLoreText());
+			jugador.GetComponent<Inventario>().agregarAInventarioLore(gameObject.GetComponent<lore>().getLoreText());
 			jugador.GetComponent<Inventario>().saveLore();
 			GetComponent<lore>().showLore();
         }
@@ -112,7 +127,6 @@ public class sePuedeRecojer : MonoBehaviour
         {
             if (nombreDePieza != nombreDePiezas.lore)
             {
-                // int piezasColectadas = jugador.GetComponent<Inventario>().getPiezasColectadasConteo();
                 if (nave.GetComponent<armarNave>().estaCompleta())
                 {
                     winState = true;
@@ -163,4 +177,5 @@ public class sePuedeRecojer : MonoBehaviour
         yield return new WaitForSeconds(tiempoVentaWin);
         SceneManager.LoadScene("Inicio");
     }
+	#endregion
 }
