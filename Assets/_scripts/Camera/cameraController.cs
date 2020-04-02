@@ -35,15 +35,9 @@ public class cameraController : MonoBehaviour
         cameraOptions.cursorLock();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void LateUpdate()
     {
-		if (!target.GetComponent<movement>().paused)
+		if (!target.GetComponent<pause>().Paused)
 		{
 			pivot.transform.position = target.transform.position;
 
