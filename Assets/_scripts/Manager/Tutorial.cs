@@ -10,46 +10,39 @@ public class Tutorial : MonoBehaviour
     private SpriteRenderer SprRender;
     private int reset = 0;
     public int state = 0;
-    public GameObject item;
+    public GameObject[] items;
+    public float stress; 
+    public GameObject camera;
+    private StressReceiver receiver;
     // Start is called before the first frame update
+
     void Start()
     {
-        SearchWindows();
-        RenderWindows();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (reset++ == 25) {
-            RenderWindows();
-            reset = 0;
+        if (state == 1) {
+            FirstStep();
         }
-        if (state == 1) { FirstStep(); }
-        else if (state == 2) { }
+        else if (state == 2) {
+            SecondStep();
+            state += 1;
+        }
 
     }
 
-    private void SearchWindows() {
-        windows = GameObject.FindGameObjectsWithTag("window");
-    }
-
-    private void RenderWindows() {
-        int indice = 1;
-        int maxWindows = windows.Length;
-        int maxSprites = sprites.Length;
-        int rnd;
-        while (indice != maxWindows) {
-            window = windows[indice++];
-            rnd = Random.Range(0, maxSprites);
-            SprRender = window.GetComponent<SpriteRenderer>();
-            SprRender.sprite = sprites[rnd];
-        }
-        
+    private void SecondStep() {
+        receiver = camera.GetComponent<StressReceiver>();
+        receiver.InduceStress(stress);
     }
 
     private void FirstStep() {
         //gameObject.SetActive(true);
-        item.gameObject.SetActive(true);
+        int indice = 0;
+        int max = items.Length;
+        for (;indice<max;) {
+            items[indice++].gameObject.SetActive(true); };
     }
 }
