@@ -849,6 +849,8 @@ GameObject:
   - component: {fileID: 1476569362884922539}
   - component: {fileID: 4902997410208233234}
   - component: {fileID: 1101410932}
+  - component: {fileID: 4903292340734713669}
+  - component: {fileID: 443524107335029506}
   m_Layer: 0
   m_Name: _astronaut
   m_TagString: Player
@@ -931,6 +933,7 @@ MonoBehaviour:
   hAxis: 0
   airTankUsage: 0
   airTankUsageRun: 1.1
+  paused: 0
 --- !u!114 &4902997410208233234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -960,6 +963,33 @@ CapsuleCollider:
   m_Height: 1.7840116
   m_Direction: 1
   m_Center: {x: -0.00042915344, y: 0.94571626, z: 0}
+--- !u!114 &4903292340734713669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7447890647311472047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f175eeeb5322aa14f9ae0659b8d7b5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 5229536217429090632, guid: ffd9cc30eba72d1479c99d7bbd67f4fc,
+    type: 3}
+--- !u!114 &443524107335029506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7447890647311472047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e666aa944196914cb36c718bf1f8091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPickup: 0
 --- !u!1 &7814828562687156792
 GameObject:
   m_ObjectHideFlags: 0
