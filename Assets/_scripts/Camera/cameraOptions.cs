@@ -11,4 +11,9 @@ static public class cameraOptions
     static public void cursorUnlock() {
         Cursor.lockState = CursorLockMode.None;
     }
+
+	static public void cursorSetVisible(bool visible)
+	{
+		Cursor.visible = visible;
+	}
 }

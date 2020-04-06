@@ -100,7 +100,10 @@ namespace ThirdPersonCamera
 
         public void LateUpdate()
         {
-            if (cameraController == null || cameraController.target == null)
+			Transform target = GetComponent<CameraController>().target;
+			bool paused = target.GetComponent<pause>().Paused;
+
+            if (cameraController == null || cameraController.target == null || paused)
                 return;
 
             if (cameraEnabled)

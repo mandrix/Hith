@@ -9,136 +9,136 @@ using System.Collections.Generic;
 
 namespace ThirdPersonCamera
 {
-    [RequireComponent(typeof(Camera))]
-    public class CameraController : MonoBehaviour
-    {
-        #region Public Unity Variables
-        public Transform target;        
-        public Vector3 offsetVector = new Vector3(0, 1.0f, 0);
-        public Vector3 cameraOffsetVector = new Vector3(0, 0, 0);
+	[RequireComponent(typeof(Camera))]
+	public class CameraController : MonoBehaviour
+	{
+		#region Public Unity Variables
+		public Transform target;
+		public Vector3 offsetVector = new Vector3(0, 1.0f, 0);
+		public Vector3 cameraOffsetVector = new Vector3(0, 0, 0);
 
-        public bool smartPivot = true;
-        public bool occlusionCheck = true;
-        public bool thicknessCheck = true;
+		public bool smartPivot = true;
+		public bool occlusionCheck = true;
+		public bool thicknessCheck = true;
 
-        public float desiredDistance = 5.0f;
-        public float collisionDistance = 0.5f;
-        public float maxThickness = 0.3f;
-        public int maxThicknessIterations = 5;
-        public float zoomOutStepValue = 1.0f;
-        public float zoomOutStepValuePerFrame = 0.1f;
+		public float desiredDistance = 5.0f;
+		public float collisionDistance = 0.5f;
+		public float maxThickness = 0.3f;
+		public int maxThicknessIterations = 5;
+		public float zoomOutStepValue = 1.0f;
+		public float zoomOutStepValuePerFrame = 0.1f;
 
-        public bool smoothTargetMode;
-        public float smoothTargetValue = 7.0f;
+		public bool smoothTargetMode;
+		public float smoothTargetValue = 7.0f;
 
-        public bool hideSkinnedMeshRenderers = false;
-        public LayerMask collisionLayer;
-        public LayerMask playerLayer;
+		public bool hideSkinnedMeshRenderers = false;
+		public LayerMask collisionLayer;
+		public LayerMask playerLayer;
 
-        [HideInInspector]
-        public bool playerCollision;
-        [HideInInspector]
-        public bool cameraNormalMode;
-        [HideInInspector]
-        public bool bGroundHit;
-        [HideInInspector]
-        public float startingY;
-        #endregion
+		[HideInInspector]
+		public bool playerCollision;
+		[HideInInspector]
+		public bool cameraNormalMode;
+		[HideInInspector]
+		public bool bGroundHit;
+		[HideInInspector]
+		public float startingY;
+		#endregion
 
-        #region Private Variables
-        // usually allocated in update, moved to avoid GC problems
-        private bool initDone;
-        private Vector3 prevTargetPos;
-        private Vector3 prevPosition;
+		#region Private Variables
+		// usually allocated in update, moved to avoid GC problems
+		private bool initDone;
+		private Vector3 prevTargetPos;
+		private Vector3 prevPosition;
 
-        private SkinnedMeshRenderer[] smrs;
-        private float distance;
-        private float thickness;
+		private SkinnedMeshRenderer[] smrs;
+		private float distance;
+		private float thickness;
 
-        private Vector3 targetPosWithOffset;
-        private Vector3 dirToTarget;
-        private Vector3 dirToTargetSmartPivot;
-        private Vector3 thicknessStartPoint;
-        private Vector3 thicknessEndPoint;
+		private Vector3 targetPosWithOffset;
+		private Vector3 dirToTarget;
+		private Vector3 dirToTargetSmartPivot;
+		private Vector3 thicknessStartPoint;
+		private Vector3 thicknessEndPoint;
 
-        private RaycastHit? occlusionHit = null;
-        private RaycastHit groundHit;
-        private RaycastHit thicknessHit;
-        private RaycastHit hitSmartPivot;
-        private RaycastHit offsetTest;
+		private RaycastHit? occlusionHit = null;
+		private RaycastHit groundHit;
+		private RaycastHit thicknessHit;
+		private RaycastHit hitSmartPivot;
+		private RaycastHit offsetTest;
 
-        private int currentIterations;
-        private Dictionary<string, RaycastHit> thicknessStarts;
-        private Dictionary<string, RaycastHit> thicknessEnds;
-        private List<RayCastWithMags> rcms;
-        private SortRayCastsCamera sortMethodCamera;
-        private SortRayCastsTarget sortMethodTarget;
-       
-        private Vector3 targetPosition;
-        private Vector3 smoothedTargetPosition;
-        #endregion
+		private int currentIterations;
+		private Dictionary<string, RaycastHit> thicknessStarts;
+		private Dictionary<string, RaycastHit> thicknessEnds;
+		private List<RayCastWithMags> rcms;
+		private SortRayCastsCamera sortMethodCamera;
+		private SortRayCastsTarget sortMethodTarget;
 
-        #region Public Get/Set Variables
-        public float Distance
-        {
-            get
-            {
-                return distance;
-            }
-        }
+		private Vector3 targetPosition;
+		private Vector3 smoothedTargetPosition;
+		#endregion
 
-        #endregion
+		#region Public Get/Set Variables
+		public float Distance
+		{
+			get
+			{
+				return distance;
+			}
+		}
+
+		#endregion
 
 
-        void Awake()
-        {
-            initDone = false;          
+		void Awake()
+		{
+			initDone = false;
 
-            sortMethodCamera = new SortRayCastsCamera();
-            sortMethodTarget = new SortRayCastsTarget();
-            distance = desiredDistance;
+			sortMethodCamera = new SortRayCastsCamera();
+			sortMethodTarget = new SortRayCastsTarget();
+			distance = desiredDistance;
 
-            cameraNormalMode = true;
+			cameraNormalMode = true;
 
-            playerCollision = false;
+			playerCollision = false;
 
-            currentIterations = 0;
-            thicknessStarts = new Dictionary<string, RaycastHit>();
-            thicknessEnds = new Dictionary<string, RaycastHit>();
+			currentIterations = 0;
+			thicknessStarts = new Dictionary<string, RaycastHit>();
+			thicknessEnds = new Dictionary<string, RaycastHit>();
 
-            InitTarget();
-        }
+			InitTarget();
+		}
 
-        void InitTarget()
-        {
-            if (target != null)
-            {
-                prevTargetPos = target.position;
-                prevPosition = transform.position;
-                targetPosition = target.position;
-                smoothedTargetPosition = target.position;
+		void InitTarget()
+		{
+			if (target != null)
+			{
+				prevTargetPos = target.position;
+				prevPosition = transform.position;
+				targetPosition = target.position;
+				smoothedTargetPosition = target.position;
 
-                if (hideSkinnedMeshRenderers)
-                    smrs = target.GetComponentsInChildren<SkinnedMeshRenderer>();
-                else
-                    smrs = null;
+				if (hideSkinnedMeshRenderers)
+					smrs = target.GetComponentsInChildren<SkinnedMeshRenderer>();
+				else
+					smrs = null;
 
-                // get colliders from target
-                var colliders = target.GetComponentsInChildren<Collider>();
+				// get colliders from target
+				var colliders = target.GetComponentsInChildren<Collider>();
 
-                foreach (var col in colliders)
-                {
-                    if (!playerLayer.IsInLayerMask(col.gameObject))
-                        Debug.LogWarning("The target \"" + col.gameObject.name + "\" has a collider which is not in the player layer. To fix: Change the layer of " + col.gameObject.name + " to the layer referenced in CameraController->Player layer");
-                }
+				foreach (var col in colliders)
+				{
+					if (!playerLayer.IsInLayerMask(col.gameObject))
+						Debug.LogWarning("The target \"" + col.gameObject.name + "\" has a collider which is not in the player layer. To fix: Change the layer of " + col.gameObject.name + " to the layer referenced in CameraController->Player layer");
+				}
 
-                initDone = true;
-            }
-        }
+				initDone = true;
+			}
+		}
 
-        void LateUpdate()
-        {
-            if (target == null)
+		void LateUpdate()
+		{
+			if (target == null || target.GetComponent<pause>().Paused)
                 return;
             else if (!initDone)
                 InitTarget(); // delayed init            
