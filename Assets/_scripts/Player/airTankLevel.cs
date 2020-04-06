@@ -17,6 +17,10 @@ public class airTankLevel : MonoBehaviour
     public AudioSource deathTheme;
     private AudioSource[] allAudioSources;
     private bool isPlayerDeath = false;
+	public bool IsPlayerDeath
+	{
+		get { return isPlayerDeath; }
+	}
 
     public GameObject camera;
     public GameObject gameOverUi;

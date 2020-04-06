@@ -4,6 +4,14 @@
 public class fogOfWar : MonoBehaviour
 {
 	#region Variables
+	//Variables to handle when to show the map
+	[SerializeField]
+	private GameObject player;
+	[SerializeField]
+	private GameObject mapUI;
+	[SerializeField]
+	private GameObject loreNote;
+
 	public GameObject m_fogOfWarPlane;
 	public Transform m_player;
 	public LayerMask m_fogLayer;
@@ -24,6 +32,29 @@ public class fogOfWar : MonoBehaviour
 
 	void Update()
     {
+		if (player.GetComponent<airTankLevel>().IsPlayerDeath)
+		{
+			Destroy(mapUI);
+		}
+
+		// This try is because when the mapUI gets destroyed, this starts giving an error
+		try
+		{
+			if (loreNote.activeSelf)
+			{
+				mapUI.SetActive(false);
+			}
+			else
+			{
+				mapUI.SetActive(true);
+			}
+		}
+		catch (MissingReferenceException)
+		{
+
+		}
+		
+
 		Ray r = new Ray(transform.position, m_player.position - transform.position);
 		RaycastHit hit;
 		if (Physics.Raycast(r, out hit, 1000, m_fogLayer, QueryTriggerInteraction.Collide))

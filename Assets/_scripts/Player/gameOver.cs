@@ -15,7 +15,6 @@ public class gameOver : MonoBehaviour
         player.GetComponent<movement>().enabled = false;
         camera.GetComponent<cameraController>().enabled = false;
         StartCoroutine(changeScene());
-        Debug.Log("Cerrando escena en 5 segundos");
     }
 
     // Update is called once per frame

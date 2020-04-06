@@ -27,8 +27,8 @@ public class treeCollider : MonoBehaviour
     private void Start()
     {
         musicSettings = GetComponent<treeMusic>();
-        saved = GetComponent<settingsToSaved>();
-        tank = GetComponent<airTankLevel>();
+        saved = player.GetComponent<settingsToSaved>();
+        tank = player.GetComponent<airTankLevel>();
     }
 
 

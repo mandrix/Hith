@@ -35,55 +35,52 @@ public class cameraController : MonoBehaviour
         cameraOptions.cursorLock();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void LateUpdate()
     {
-        pivot.transform.position = target.transform.position;
+		if (!target.GetComponent<pause>().Paused)
+		{
+			pivot.transform.position = target.transform.position;
 
 
-        // GET THE X POSITION OF THE MOUSE AND ROTATE THE CAMERA
-        float horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
-        // target.Rotate(0.0f, horizontal, 0.0f);
-        pivot.Rotate(0.0f, horizontal, 0.0f);
+			// GET THE X POSITION OF THE MOUSE AND ROTATE THE CAMERA
+			float horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
+			// target.Rotate(0.0f, horizontal, 0.0f);
+			pivot.Rotate(0.0f, horizontal, 0.0f);
 
-        // GET THE Y POSITION OF THE MOUSE AND ROTATE THE PIVOT
-        float vertical = Input.GetAxis("Mouse Y") * rotateSpeed;
+			// GET THE Y POSITION OF THE MOUSE AND ROTATE THE PIVOT
+			float vertical = Input.GetAxis("Mouse Y") * rotateSpeed;
 
-        if (invertY)
-        {
-            pivot.Rotate(vertical, 0.0f, 0.0f);
-        }
-        else
-        {
-            pivot.Rotate(-vertical, 0.0f, 0.0f);
-        }
+			if (invertY)
+			{
+				pivot.Rotate(vertical, 0.0f, 0.0f);
+			}
+			else
+			{
+				pivot.Rotate(-vertical, 0.0f, 0.0f);
+			}
 
-        // LIMIT UP/DOWN CAMERA ROTATION
-        if (pivot.rotation.eulerAngles.x > maxViewAngle && pivot.rotation.eulerAngles.x < 180f)
-        {
-            // pivot.rotation = Quaternion.Euler(maxViewAngle, 0.0f, 0.0f);
-        }
-        if (pivot.rotation.eulerAngles.x > 180f && pivot.rotation.eulerAngles.x < 360f + minViewAngle)
-        {
-            // pivot.rotation = Quaternion.Euler(360f + minViewAngle, 0.0f, 0.0f);
-        }
+			// LIMIT UP/DOWN CAMERA ROTATION
+			if (pivot.rotation.eulerAngles.x > maxViewAngle && pivot.rotation.eulerAngles.x < 180f)
+			{
+				// pivot.rotation = Quaternion.Euler(maxViewAngle, 0.0f, 0.0f);
+			}
+			if (pivot.rotation.eulerAngles.x > 180f && pivot.rotation.eulerAngles.x < 360f + minViewAngle)
+			{
+				// pivot.rotation = Quaternion.Euler(360f + minViewAngle, 0.0f, 0.0f);
+			}
 
-        // MOVE THE CAMERA BASED ON THE CURRENT ROTATION OF THE TARGET AND THE ORIGINAL OFFSET
-        float desiredYAngle = pivot.eulerAngles.y;
-        float desiredXAngle = pivot.eulerAngles.x;
-        Quaternion rotation = Quaternion.Euler(desiredXAngle, desiredYAngle, 0.0f);
-        transform.position = target.position - (rotation * offset);
+			// MOVE THE CAMERA BASED ON THE CURRENT ROTATION OF THE TARGET AND THE ORIGINAL OFFSET
+			float desiredYAngle = pivot.eulerAngles.y;
+			float desiredXAngle = pivot.eulerAngles.x;
+			Quaternion rotation = Quaternion.Euler(desiredXAngle, desiredYAngle, 0.0f);
+			transform.position = target.position - (rotation * offset);
 
-        if (transform.position.y < target.position.y)
-        {
-            transform.position = new Vector3(transform.position.x, target.position.y - 0.5f, target.position.z);
-        }
+			if (transform.position.y < target.position.y)
+			{
+				transform.position = new Vector3(transform.position.x, target.position.y - 0.5f, target.position.z);
+			}
 
-        transform.LookAt(target); // MIRAR AL TARGET ESPECIFICO
-    }
+			transform.LookAt(target); // MIRAR AL TARGET ESPECIFICO
+		}
+	}
 }
