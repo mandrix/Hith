@@ -1,5 +1,5 @@
 namespace Dialog {
-    class NPCBehaviour : BaseNPCBehaviour {
+    public class NPCBehaviour : BaseNPCBehaviour {
 
     }
 }

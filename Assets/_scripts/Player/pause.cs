@@ -8,7 +8,7 @@ public class pause : MonoBehaviour
 	[SerializeField]
 	[Space]
 	private GameObject pauseMenu;
-	public bool Paused { get; private set; } = false;
+	public bool Paused { get; set; } = false;
 	#endregion
 
 	#region Unity Methods

@@ -23,9 +23,9 @@ namespace Dialog
 		public GameObject Alt1Button;
 		public GameObject Alt2Button;
 		public GameObject NextButton;
-		public Text NPCName;
+		public TMPro.TextMeshProUGUI NPCName;
 		public RawImage NPCImage;
-		public Text Content;
+		public TMPro.TextMeshProUGUI Content;
 		public GameObject ButtonBar;
 		public Text PrevButtonText;
 		public Text Alt1ButtonText;
