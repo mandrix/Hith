@@ -7,6 +7,7 @@ TagManager:
   - partes_de_nave
   - gameOverUI
   - window
+  - fruit
   layers:
   - Default
   - TransparentFX

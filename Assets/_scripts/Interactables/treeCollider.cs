@@ -17,10 +17,6 @@ public class treeCollider : MonoBehaviour
     [SerializeField]
     private bool getTree = true;
 
-
-    [SerializeField]
-    [Range(0, 100)]
-    private int oxygenToAdd;
     //unity functions
 
 
@@ -51,7 +47,6 @@ public class treeCollider : MonoBehaviour
             if (getTree && distanceToPlayer <= distanceToPlayerInitial / 2)
             {
                 getTree = false;
-                tank.addAir(oxygenToAdd);
                 saved.Saving();
             }
         }
