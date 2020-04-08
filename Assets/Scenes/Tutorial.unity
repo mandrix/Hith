@@ -1718,6 +1718,7 @@ MonoBehaviour:
   items: []
   stress: 2
   camera: {fileID: 1609957813}
+  coronelDialog: {fileID: 301981021}
 --- !u!64 &804088710
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4352,7 +4353,7 @@ PrefabInstance:
     - target: {fileID: 5838741878335514556, guid: 12dc0ba8d6b65d74d9a98113b0d1e792,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.47
+      value: 3.08
       objectReference: {fileID: 0}
     - target: {fileID: 5838741878335514556, guid: 12dc0ba8d6b65d74d9a98113b0d1e792,
         type: 3}
