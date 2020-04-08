@@ -25,17 +25,12 @@ public class SpawnFruit : MonoBehaviour
 	#region Unity Methods
 	void Start()
 	{
-		obtainVectors();
-		foreach(Vector3 point in spawnPoints){ Debug.Log(point); }
-		Debug.Log("Done");
+		obtainVectors();		
 		Shuffle(spawnPoints);
-		foreach (Vector3 point in spawnPoints) { Debug.Log(point); }
 	}
 
 	private void Update()
 	{
-		//Debug.Log(Vector3.Distance(player.transform.position, transform.position) < distance);
-		//Debug.Log(spawned);
 		if (Vector3.Distance(player.position, transform.position) < distance && !spawned)
 		{
 			spawned = true;
