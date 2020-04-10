@@ -35,7 +35,7 @@ public class StressReceiver : MonoBehaviour
 
             transform.localPosition += _lastPosition - previousPosition;
             transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles + _lastRotation - previousRotation);
-            //_trauma = Mathf.Clamp01(_trauma - Time.deltaTime);
+            _trauma = Mathf.Clamp01(_trauma - Time.deltaTime);
         }
         else
         {

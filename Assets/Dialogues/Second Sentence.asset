@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4cd8eb24603b4eb7ba585718f01507f, type: 3}
-  m_Name: New Dialogs
+  m_Name: Second Sentence
   m_EditorClassIdentifier: 
   HasCloseButton: 1
   Lines:
-  - {fileID: 11400000, guid: c11fff519ed0f0b49b6faf91115264f7, type: 2}
-  - {fileID: 11400000, guid: 97378ed3a47d073459b0f7f6f56d14bd, type: 2}
+  - {fileID: 11400000, guid: ea16d55b2e81ea74c9ce50a59ea37efe, type: 2}
+  - {fileID: 11400000, guid: 36bbd525e30d39c419f0d50aa2a5bd5e, type: 2}
+  - {fileID: 11400000, guid: 660266ce6fe4fd54993bf58526a5e1ec, type: 2}
+  - {fileID: 11400000, guid: 235990d5ebdd2e049851eec97e357c7b, type: 2}
   HasHotKeys: 1
   PrevHotKey: 0
   Alt1HotKey: 0

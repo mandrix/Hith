@@ -11,10 +11,12 @@ public class Tutorial : MonoBehaviour
     private int reset = 0;
     public int state = 0;
     public GameObject[] items;
+    public GameObject UIwasd;
     public float stress; 
     public GameObject camera;
     private StressReceiver receiver;
     public GameObject coronelDialog;
+    public GameObject player;
     // Start is called before the first frame update
 
     void Start()
@@ -25,32 +27,53 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (state == 0) {
-            dialogueStep();
+        if (state == -1)
+            return;
+
+        else if (state == 0)
+        {
+            coronelDialog.GetComponent<DialogHandler>().RoutineDialogStart();
+            state = -1;
         }
-        if (state == 1) {
-            FirstStep();
+        else if (state == 1)
+        {
+            FirstStep(true);
+            state = -1;
         }
-        else if (state == 2) {
+        else if (state == 2)
+        {
+            FirstStep(false);
             SecondStep();
-            state += 1;
         }
-
+        else if (state == 3) {
+            ThirdStep();
+            state = -1;
+        }
+        
     }
 
-    private void SecondStep() {
-        camera.GetComponent<StressReceiver>().InduceStress(stress);
-    }
-
-    private void FirstStep() {
+    private void FirstStep(bool active)
+    {
         //gameObject.SetActive(true);
         int indice = 0;
         int max = items.Length;
-        for (;indice<max;) {
-            items[indice++].gameObject.SetActive(true); };
+        for (; indice < max;)
+        {
+            items[indice++].gameObject.SetActive(active);
+        };
+    }
+    private void SecondStep()
+    {
+        camera.GetComponent<StressReceiver>().InduceStress(stress);
     }
 
-    private void dialogueStep() {
-        coronelDialog.GetComponent<DialogHandler>().StartCoroutine("StartDialog");
+    private void ThirdStep() {
+        camera.GetComponent<StressReceiver>().InduceStress(0);
     }
+
+    public void SetState(int newState) {
+        state = newState;
+    }
+
+    
 }

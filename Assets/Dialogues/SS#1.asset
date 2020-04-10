@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 871de7d357e814bfbb698fd4d7380a10, type: 3}
-  m_Name: Introduction
+  m_Name: SS#1
   m_EditorClassIdentifier: 
-  Line: el texto a mostrar
+  Line: primera de la segunda
   IsAutoClosing: 0
   AutoCloseTimeout: 0
-  HasPrev: 1
-  PrevText: Prev
+  HasPrev: 0
+  PrevText: Anterior
   HasNext: 1
-  NextText: Next
+  NextText: Siguiente
   HasAlternative1: 0
   AlternativeText1: 
   Alternative1TriggerEvents:

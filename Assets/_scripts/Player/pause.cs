@@ -35,7 +35,6 @@ public class pause : MonoBehaviour
 	public void pauseGame()
 	{
 		cameraOptions.cursorUnlock();
-		cameraOptions.cursorSetVisible(true);
 		pauseMenu.SetActive(true);
 		Paused = true;
 		Time.timeScale = 0f;
@@ -44,7 +43,6 @@ public class pause : MonoBehaviour
 	public void unpauseGame()
 	{
 		pauseMenu.SetActive(false);
-		cameraOptions.cursorSetVisible(false);
 		Paused = false;
 		Time.timeScale = 1f;
 		cameraOptions.cursorLock();

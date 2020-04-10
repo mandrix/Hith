@@ -12,7 +12,6 @@ public class switchScenes : MonoBehaviour
 		es3File = new ES3File("save.es3");
 
 		cameraOptions.cursorUnlock();
-		cameraOptions.cursorSetVisible(true);
 	}
 
     public void switchScene(string name)
