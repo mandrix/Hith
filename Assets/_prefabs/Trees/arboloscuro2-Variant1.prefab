@@ -120,7 +120,7 @@ PrefabInstance:
     - target: {fileID: 7693690824056980883, guid: 335bd0ce7b616e145b078c8b0c8b4db7,
         type: 3}
       propertyPath: m_Name
-      value: arboloscuro2
+      value: arboloscuro2-Variant1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 335bd0ce7b616e145b078c8b0c8b4db7, type: 3}

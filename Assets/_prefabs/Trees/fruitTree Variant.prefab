@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 4409366872954791203, guid: 69e10cf5e7cb8be49a73fc6c45b049ee,
         type: 3}
       propertyPath: m_Name
-      value: fruitTree
+      value: fruitTree Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7135023256834982920, guid: 69e10cf5e7cb8be49a73fc6c45b049ee,
         type: 3}

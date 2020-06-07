@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &204240414695032749
 Transform:
@@ -126,7 +126,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7690815957642466453
 Transform:
@@ -159,9 +159,6 @@ MonoBehaviour:
     type: 3}
   ambientAudio: {fileID: 576117035371348061, guid: 327a17d924e82fd4c98b3b5d62324ac0,
     type: 3}
-  player: {fileID: 7447890647311472047, guid: 12dc0ba8d6b65d74d9a98113b0d1e792, type: 3}
-  oxygenToAdd: 25
-  inRadiusToGetOxygen: 0
 --- !u!135 &5323340290094490151
 SphereCollider:
   m_ObjectHideFlags: 0
