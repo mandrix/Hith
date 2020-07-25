@@ -19,6 +19,9 @@ public class InventoryUI : MonoBehaviour
 	[SerializeField]
 	private Transform itemsParent;   // The parent object of all the items
 
+	[SerializeField]
+	private GameObject player;
+
 	Inventory inventory;    // Our current inventory
 
 	InventorySlot[] slots;  // List of all the slots
@@ -39,7 +42,11 @@ public class InventoryUI : MonoBehaviour
 	{
 		if (Input.GetButtonDown("Inventory"))
 		{
-			inventoryUI.SetActive(!inventoryUI.activeSelf);
+			if(!inventoryUI.activeSelf)
+				player.GetComponent<pause>().pauseGame(inventoryUI);
+			else
+				player.GetComponent<pause>().unpauseGame(inventoryUI);
+
 			minimapUI.SetActive(!minimapUI.activeSelf);
 			gasTankUI.SetActive(!gasTankUI.activeSelf);
 		}

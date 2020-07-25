@@ -38,6 +38,7 @@ public class InventoryButtons : MonoBehaviour
 		{
 			inventoryUI.SetActive(true);
 			fullMapUI.SetActive(false);
+			currentPage = pages.inventory;
 		}
 	}
 
@@ -47,6 +48,7 @@ public class InventoryButtons : MonoBehaviour
 		{
 			fullMapUI.SetActive(true);
 			inventoryUI.SetActive(false);
+			currentPage = pages.fullMap;
 		}
 	}
 	#endregion
