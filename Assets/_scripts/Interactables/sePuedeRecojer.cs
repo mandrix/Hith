@@ -51,6 +51,9 @@ public class sePuedeRecojer : MonoBehaviour
 		get { return flag; }
 	}
 
+	[SerializeField]
+	private Item itemInfo;
+
     // AGREGADO X JUAN
     public AudioSource winTheme;
     private AudioSource[] allAudioSources;
@@ -65,7 +68,7 @@ public class sePuedeRecojer : MonoBehaviour
     {
 		if (jugador.GetComponent<Pickup>().canPickup && flag)
 		{
-			AgregarInverntario();
+			AddToInventory();
 		}
 
         // minDistanceForHighlight = 20f;
@@ -108,17 +111,16 @@ public class sePuedeRecojer : MonoBehaviour
 	#endregion
 
 	#region Custom methods
-	void AgregarInverntario()
+	void AddToInventory()
     {
 
         if (nombreDePieza != nombreDePiezas.lore)
-		{ 
-            nave.GetComponent<armarNave>().armar(nombreDePieza);
+		{
+			bool wasPickedUp = Inventory.instance.Add(itemInfo);    // Add to inventory
+			nave.GetComponent<armarNave>().armar(nombreDePieza);	
         }
         else
         {
-			jugador.GetComponent<Inventario>().agregarAInventarioLore(gameObject.GetComponent<lore>().getLoreText());
-			jugador.GetComponent<Inventario>().saveLore();
 			GetComponent<lore>().showLore();
         }
 
@@ -147,8 +149,8 @@ public class sePuedeRecojer : MonoBehaviour
         }
 
 
-
-        Destroy(gameObject, 0.10f);
+		flag = false;
+		Destroy(gameObject, 0.10f);
     }
 
     void stopAllAudio()
