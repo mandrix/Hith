@@ -11,6 +11,10 @@ public class UIPickUpBar : MonoBehaviour
     public Vector3 positionUpdate;
     public Transform camara;
     public Image pickUpBar;
+
+	[SerializeField]
+	[Tooltip("Coefficient in which to decrement the UI bar")]
+	private float coef = .1f; 
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +26,7 @@ public class UIPickUpBar : MonoBehaviour
     {
         if (player.GetComponent<pause>().Paused == false)
         {
-            pickUpBar.fillAmount -= 0.02f;
+            pickUpBar.fillAmount -= Time.deltaTime * coef;
             positionUpdate = player.transform.position;
             gameObject.transform.LookAt(camara);
             if (positionUpdate.x != positionInitial.x || positionUpdate.z != positionInitial.z)

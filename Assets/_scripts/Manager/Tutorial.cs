@@ -64,7 +64,6 @@ public class Tutorial : MonoBehaviour
         switchfinal += 1;
         if (switchfinal >= 360)
             state = 3;
-        Debug.Log("entra");
         camera.GetComponent<StressReceiver>().InduceStress(stress);
     }
 

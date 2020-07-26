@@ -36,7 +36,7 @@ public class sePuedeRecojer : MonoBehaviour
     [SerializeField]
     private nombreDePiezas nombreDePieza;
     [SerializeField]
-    private GameObject jugador;
+    private GameObject player;
     [SerializeField]
     [Range(0, 6)]
     private float tiempoParaRecojer;
@@ -66,13 +66,13 @@ public class sePuedeRecojer : MonoBehaviour
 	#region Unity Methods
 	private void Update()
     {
-		if (jugador.GetComponent<Pickup>().canPickup && flag)
+		if (player.GetComponent<Pickup>().canPickup && flag)
 		{
 			AddToInventory();
 		}
 
         // minDistanceForHighlight = 20f;
-        float distance = Vector3.Distance(jugador.transform.position, transform.position);
+        float distance = Vector3.Distance(player.transform.position, transform.position);
 
         if (distance <= minDistanceForHighlight)
         {
@@ -92,19 +92,21 @@ public class sePuedeRecojer : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag(jugador.tag))
+        if (other.CompareTag(player.tag))
         {
             if (Input.GetButtonDown("Fire1") && !flag)
             {
-                flag = true;
+				player.GetComponent<movement>().setCanPick(true);
+				flag = true;
             }
         }
     }
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (other.CompareTag(jugador.tag))
+		if (other.CompareTag(player.tag))
 		{
+			player.GetComponent<movement>().setCanPick(false);
 			flag = false;
 		}
 	}
@@ -133,8 +135,8 @@ public class sePuedeRecojer : MonoBehaviour
                 {
                     winState = true;
                     stopAllAudio();
-                    jugador.GetComponent<movement>().enabled = false;
-                    jugador.GetComponent<Animator>().SetBool("dance", true);
+                    player.GetComponent<movement>().enabled = false;
+                    player.GetComponent<Animator>().SetBool("dance", true);
                     winTheme.Play();
                     winTheme.volume = 1.0f;
 
