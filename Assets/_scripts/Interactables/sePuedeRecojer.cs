@@ -45,10 +45,10 @@ public class sePuedeRecojer : MonoBehaviour
     [SerializeField]
     private float minDistanceForHighlight;
 
-    private bool flag = false;
+    private bool pickUp = false;
 	public bool PickedUp
 	{
-		get { return flag; }
+		get { return pickUp; }
 	}
 
 	[SerializeField]
@@ -64,9 +64,10 @@ public class sePuedeRecojer : MonoBehaviour
 	#endregion
 
 	#region Unity Methods
+
 	private void Update()
     {
-		if (player.GetComponent<Pickup>().canPickup && flag)
+		if (player.GetComponent<Pickup>().canPickup && pickUp)
 		{
 			AddToInventory();
 		}
@@ -94,20 +95,27 @@ public class sePuedeRecojer : MonoBehaviour
     {
         if (other.CompareTag(player.tag))
         {
-            if (Input.GetButtonDown("Fire1") && !flag)
+			player.GetComponent<movement>().setCanPick(true);
+			if (Input.GetButtonDown("Fire1") && !pickUp)
             {
-				player.GetComponent<movement>().setCanPick(true);
-				flag = true;
+				pickUp = true;
             }
         }
     }
+
+	private void OnDestroy() {
+		if (player)
+		{
+			player.GetComponent<movement>().setCanPick(false);
+		}
+	}
 
 	private void OnTriggerExit(Collider other)
 	{
 		if (other.CompareTag(player.tag))
 		{
 			player.GetComponent<movement>().setCanPick(false);
-			flag = false;
+			pickUp = false;
 		}
 	}
 	#endregion
@@ -151,7 +159,7 @@ public class sePuedeRecojer : MonoBehaviour
         }
 
 
-		flag = false;
+		pickUp = false;
 		Destroy(gameObject, 0.10f);
     }
 

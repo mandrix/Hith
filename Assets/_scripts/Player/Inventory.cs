@@ -17,7 +17,6 @@ public class Inventory : MonoBehaviour
 		}
 
 		instance = this;
-		instance.gameObject.SetActive(false);
 	}
 
 	#endregion

@@ -5,7 +5,7 @@ using UnityEngine;
 public class skipLore : MonoBehaviour
 {
 	[SerializeField]
-	private GameObject inventoryUI;
+	private GameObject miniMapUI;
 
 	[SerializeField]
 	private GameObject gasTankUI;
@@ -13,7 +13,7 @@ public class skipLore : MonoBehaviour
     {
 		if (Input.anyKey)
 		{
-			inventoryUI.SetActive(true);
+			miniMapUI.SetActive(true);
 			gasTankUI.SetActive(true);
 			gameObject.SetActive(false);
 		}

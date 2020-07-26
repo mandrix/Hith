@@ -5,22 +5,7 @@ public class InventoryUI : MonoBehaviour
 {
 	#region Variables
 	[SerializeField]
-	private KeyCode openInventory = KeyCode.E;
-
-	[SerializeField]
-	private GameObject inventoryUI;
-
-	[SerializeField]
-	private GameObject gasTankUI;
-
-	[SerializeField]
-	private GameObject minimapUI;
-
-	[SerializeField]
 	private Transform itemsParent;   // The parent object of all the items
-
-	[SerializeField]
-	private GameObject player;
 
 	Inventory inventory;    // Our current inventory
 
@@ -31,25 +16,18 @@ public class InventoryUI : MonoBehaviour
 	#region Unity Methods
 	void Start()
     {
+		Debug.Log("in");
 		inventory = Inventory.instance;
 		inventory.onItemChangedCallback += UpdateUI;    // Subscribe to the onItemChanged callback
 
 		// Populate our slots array
 		slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+		gameObject.SetActive(false);
 	}
 
 	private void Update()
 	{
-		if (Input.GetButtonDown("Inventory"))
-		{
-			if(!inventoryUI.activeSelf)
-				player.GetComponent<pause>().pauseGame(inventoryUI);
-			else
-				player.GetComponent<pause>().unpauseGame(inventoryUI);
-
-			minimapUI.SetActive(!minimapUI.activeSelf);
-			gasTankUI.SetActive(!gasTankUI.activeSelf);
-		}
+		
 	}
 	#endregion
 
