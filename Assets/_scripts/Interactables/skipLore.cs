@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class skipLore : MonoBehaviour
 {
-    void Update()
+	[SerializeField]
+	private GameObject miniMapUI;
+
+	[SerializeField]
+	private GameObject gasTankUI;
+	void Update()
     {
 		if (Input.anyKey)
 		{
+			miniMapUI.SetActive(true);
+			gasTankUI.SetActive(true);
 			gameObject.SetActive(false);
 		}
     }

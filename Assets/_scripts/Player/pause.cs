@@ -24,25 +24,25 @@ public class pause : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Escape) && !Paused)
 		{
-			pauseGame();
+			pauseGame(pauseMenu);
 		}
 		else if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			unpauseGame();
+			unpauseGame(pauseMenu);
 		}
 	}
 
-	public void pauseGame()
+	public void pauseGame(GameObject menu)
 	{
 		cameraOptions.cursorUnlock();
-		pauseMenu.SetActive(true);
+		menu.SetActive(true);
 		Paused = true;
 		Time.timeScale = 0f;
 	}
 
-	public void unpauseGame()
+	public void unpauseGame(GameObject menu)
 	{
-		pauseMenu.SetActive(false);
+		menu.SetActive(false);
 		Paused = false;
 		Time.timeScale = 1f;
 		cameraOptions.cursorLock();
@@ -50,13 +50,13 @@ public class pause : MonoBehaviour
 
 	public void reloadScene()
 	{
-		unpauseGame();
+		unpauseGame(pauseMenu);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	public void goToMainMenu()
 	{
-		unpauseGame();
+		unpauseGame(pauseMenu);
 		SceneManager.LoadScene("Scenes/Inicio");
 	}
 	#endregion

@@ -5,6 +5,10 @@ using UnityEngine;
 public class lore : MonoBehaviour
 {
 	[SerializeField]
+	private GameObject minimapUI;
+	[SerializeField]
+	private GameObject gasTankUI;
+	[SerializeField]
 	[TextArea]
 	private string loreText;
 	[SerializeField]
@@ -15,6 +19,8 @@ public class lore : MonoBehaviour
 	private TMPro.TMP_FontAsset font;
 	public void showLore()
 	{
+		minimapUI.SetActive(false);
+		gasTankUI.SetActive(false);
 		loreUI.SetActive(true);
 		loreUI.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = loreText;
 		loreUI.GetComponentInChildren<TMPro.TextMeshProUGUI>().font = font;

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871de7d357e814bfbb698fd4d7380a10, type: 3}
+  m_Name: SS#2
+  m_EditorClassIdentifier: 
+  Line: segunda segunda
+  IsAutoClosing: 0
+  AutoCloseTimeout: 0
+  HasPrev: 0
+  PrevText: Anterior
+  HasNext: 1
+  NextText: Siguiente
+  HasAlternative1: 0
+  AlternativeText1: 
+  Alternative1TriggerEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  HasAlternative2: 0
+  AlternativeText2: 
+  Alternative2TriggerEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  OverrideNPC: 0
+  NPCName: 
+  NPCThumbnail: {fileID: 0}
+  OnOpenTriggerEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCloseTriggerEvents:
+    m_PersistentCalls:
+      m_Calls: []

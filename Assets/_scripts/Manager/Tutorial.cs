@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
@@ -17,20 +18,13 @@ public class Tutorial : MonoBehaviour
     private StressReceiver receiver;
     public GameObject coronelDialog;
     public GameObject player;
-    // Start is called before the first frame update
-
-    void Start()
-    {
-        
-    }
-
+    public switchScenes switchScene;
+    public int switchfinal = 0;
     // Update is called once per frame
     void Update()
     {
-        if (state == -1)
-            return;
 
-        else if (state == 0)
+        if (state == 0)
         {
             coronelDialog.GetComponent<DialogHandler>().RoutineDialogStart();
             state = -1;
@@ -44,8 +38,10 @@ public class Tutorial : MonoBehaviour
         {
             FirstStep(false);
             SecondStep();
+
         }
-        else if (state == 3) {
+        else if (state == 3)
+        {
             ThirdStep();
             state = -1;
         }
@@ -62,18 +58,29 @@ public class Tutorial : MonoBehaviour
             items[indice++].gameObject.SetActive(active);
         };
     }
+
     private void SecondStep()
     {
+        switchfinal += 1;
+        if (switchfinal >= 360)
+            state = 3;
         camera.GetComponent<StressReceiver>().InduceStress(stress);
     }
 
     private void ThirdStep() {
         camera.GetComponent<StressReceiver>().InduceStress(0);
+        StartGame();
     }
 
     public void SetState(int newState) {
         state = newState;
     }
 
-    
+    public void createuiwasd() {
+        UIwasd.SetActive(true);
+    }
+
+    private void StartGame() {
+        SceneManager.LoadScene("nivel1");
+    }
 }

@@ -36,23 +36,6 @@ public class fogOfWar : MonoBehaviour
 		{
 			Destroy(mapUI);
 		}
-
-		// This try is because when the mapUI gets destroyed, this starts giving an error
-		try
-		{
-			if (loreNote.activeSelf)
-			{
-				mapUI.SetActive(false);
-			}
-			else
-			{
-				mapUI.SetActive(true);
-			}
-		}
-		catch (MissingReferenceException)
-		{
-
-		}
 		
 
 		Ray r = new Ray(transform.position, m_player.position - transform.position);
