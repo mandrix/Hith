@@ -15,7 +15,7 @@ MonoBehaviour:
   Line: segunda segunda
   IsAutoClosing: 0
   AutoCloseTimeout: 0
-  HasPrev: 1
+  HasPrev: 0
   PrevText: Anterior
   HasNext: 1
   NextText: Siguiente

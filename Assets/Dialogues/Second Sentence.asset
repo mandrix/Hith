@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasCloseButton: 1
   Lines:
-  - {fileID: 11400000, guid: ea16d55b2e81ea74c9ce50a59ea37efe, type: 2}
-  - {fileID: 11400000, guid: 36bbd525e30d39c419f0d50aa2a5bd5e, type: 2}
   - {fileID: 11400000, guid: 660266ce6fe4fd54993bf58526a5e1ec, type: 2}
   - {fileID: 11400000, guid: 235990d5ebdd2e049851eec97e357c7b, type: 2}
-  HasHotKeys: 1
+  HasHotKeys: 0
   PrevHotKey: 0
   Alt1HotKey: 0
   Alt2HotKey: 0

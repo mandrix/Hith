@@ -18,6 +18,7 @@ public class ItemTutorial : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        player.GetComponent<movement>().setCanPick(true);
         if (other.CompareTag(player.tag)) {
             if (Input.GetButtonDown("Fire1")){
                 airTank.SetActive(true);

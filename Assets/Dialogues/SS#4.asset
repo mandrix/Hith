@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871de7d357e814bfbb698fd4d7380a10, type: 3}
   m_Name: SS#4
   m_EditorClassIdentifier: 
-  Line: listo la ultima, apreita la equis XD
+  Line: Listo, hemos encontrado a un planeta llamado Hith, consigue tu tanque de aire
+    y preparate para un aterrizaje forzoso.
   IsAutoClosing: 0
   AutoCloseTimeout: 0
   HasPrev: 0

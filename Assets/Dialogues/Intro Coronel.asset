@@ -16,9 +16,7 @@ MonoBehaviour:
   Lines:
   - {fileID: 11400000, guid: c11fff519ed0f0b49b6faf91115264f7, type: 2}
   - {fileID: 11400000, guid: 97378ed3a47d073459b0f7f6f56d14bd, type: 2}
-  - {fileID: 11400000, guid: 32d15c9a6bce4c646b493dafa2816bcd, type: 2}
-  - {fileID: 11400000, guid: 773aa8f7d65d521409589c22d913ccc9, type: 2}
-  HasHotKeys: 1
+  HasHotKeys: 0
   PrevHotKey: 0
   Alt1HotKey: 0
   Alt2HotKey: 0
