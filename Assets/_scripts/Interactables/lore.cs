@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lore : MonoBehaviour
+public class lore : Interactable
 {
-	[SerializeField]
+    [Header("Custom Variables")]
+    [SerializeField]
 	private GameObject minimapUI;
 	[SerializeField]
 	private GameObject gasTankUI;
@@ -17,13 +18,24 @@ public class lore : MonoBehaviour
 	[Header("Fonts")]
 	[SerializeField]
 	private TMPro.TMP_FontAsset font;
-	public void showLore()
+
+
+    protected override void Start()
+    {
+        Debug.Log(minimapUI.activeSelf);
+        minimapUI.SetActive(false);
+        Debug.Log(minimapUI.activeSelf);
+        base.Start();
+    }
+
+    override protected void Interact()
 	{
 		minimapUI.SetActive(false);
 		gasTankUI.SetActive(false);
 		loreUI.SetActive(true);
 		loreUI.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = loreText;
 		loreUI.GetComponentInChildren<TMPro.TextMeshProUGUI>().font = font;
+        //base.Interact();
 	}
 
 	public string getLoreText()

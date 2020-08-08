@@ -131,7 +131,7 @@ public class sePuedeRecojer : MonoBehaviour
         }
         else
         {
-			GetComponent<lore>().showLore();
+			//GetComponent<lore>.;
         }
 
         // AGREGADO POR JUAN
