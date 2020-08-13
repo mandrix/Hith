@@ -16,7 +16,6 @@ public class InventoryUI : MonoBehaviour
 	#region Unity Methods
 	void Start()
     {
-		Debug.Log("in");
 		inventory = Inventory.instance;
 		inventory.onItemChangedCallback += UpdateUI;    // Subscribe to the onItemChanged callback
 
