@@ -28,17 +28,25 @@ public class Interactable : MonoBehaviour
         if (other.CompareTag(player.tag))
         {
 			player.GetComponent<movement>().setCanPick(true);  // canPick is a Variable to prevent spam
-            if (Input.GetButtonDown("Fire1") && canPickUp)
-            {
-                canPickUp = false;
-                Interact();
-            }
         }
     }
 
-    virtual protected void Interact() {
-        AddToInventory();
-        Destroy(gameObject, 0.1f);
+
+    virtual protected void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(player.tag)) {
+            player.GetComponent<Pickup>().SetItem(gameObject.GetComponent<Interactable>());
+        }
+    }
+
+
+    virtual public void Interact() {
+        if (canPickUp) {
+            AddToInventory();
+            Destroy(gameObject, 0.1f);
+            canPickUp = false;
+        }
+        
     }
 
     virtual protected void AddToInventory()

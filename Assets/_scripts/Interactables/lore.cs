@@ -25,7 +25,7 @@ public class lore : Interactable
         base.Start();
     }
 
-    override protected void Interact()
+    override public void Interact()
 	{
 		minimapUI.SetActive(false);
 		gasTankUI.SetActive(false);
@@ -35,7 +35,15 @@ public class lore : Interactable
         base.Interact();
 	}
 
-	public string getLoreText()
+    override protected void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(player.tag))
+        {
+            player.GetComponent<Pickup>().SetItem(gameObject.GetComponent<lore>());
+        }
+    }
+
+    public string getLoreText()
 	{
 		return loreText;
 	}
