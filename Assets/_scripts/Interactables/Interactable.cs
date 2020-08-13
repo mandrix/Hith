@@ -6,7 +6,7 @@ public class Interactable : MonoBehaviour
 {
     [Header("Interactable Variables")]
     [SerializeField]
-    //public GameObject ColliderForRespawn;
+    public GameObject ColliderForRespawn;
 
     protected bool canPickUp = true;
     
@@ -20,7 +20,7 @@ public class Interactable : MonoBehaviour
 
     virtual protected void Start()
     {
-        //Instantiate(ColliderForRespawn, transform.position, new Quaternion(), transform);
+        Instantiate(ColliderForRespawn, transform.position, new Quaternion(), transform);
     }
 
     virtual protected void OnTriggerStay(Collider other)
