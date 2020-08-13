@@ -35,7 +35,7 @@ public class lore : Interactable
 		loreUI.SetActive(true);
 		loreUI.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = loreText;
 		loreUI.GetComponentInChildren<TMPro.TextMeshProUGUI>().font = font;
-        //base.Interact();
+        base.Interact();
 	}
 
 	public string getLoreText()
