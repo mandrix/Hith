@@ -22,9 +22,6 @@ public class lore : Interactable
 
     protected override void Start()
     {
-        Debug.Log(minimapUI.activeSelf);
-        minimapUI.SetActive(false);
-        Debug.Log(minimapUI.activeSelf);
         base.Start();
     }
 
