@@ -7,16 +7,26 @@ public class SpawnItem : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+    private GameObject parent;
+
     private void Start()
     {
-        player = GetComponentInParent<Interactable>().GetPlayer();
+        if (player == null) { }
+            //player = GetComponentInParent<Collector>().GetPlayer();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(player.tag))
         {
-            transform.parent.gameObject.SetActive(true);
+            if (parent)
+            {
+                parent.gameObject.SetActive(true);
+            }
+            else
+            {
+                Destroy(this);
+            }
         }
     }
 
@@ -24,7 +34,17 @@ public class SpawnItem : MonoBehaviour
     {
         if (other.CompareTag(player.tag))
         {
-            transform.parent.gameObject.SetActive(false);
+            if (parent)
+            {
+                parent.gameObject.SetActive(false);
+            }
+            else {
+                Destroy(this);
+            }
         }
+    }
+
+    public void SetParent(GameObject newParent) {
+        parent = newParent;
     }
 }

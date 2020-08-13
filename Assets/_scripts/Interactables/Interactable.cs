@@ -5,8 +5,6 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     [Header("Interactable Variables")]
-    [SerializeField]
-    public GameObject ColliderForRespawn;
 
     protected bool canPickUp = true;
     
@@ -16,11 +14,9 @@ public class Interactable : MonoBehaviour
     private Item itemInfo;
 
     
-
-
     virtual protected void Start()
     {
-        Instantiate(ColliderForRespawn, transform.position, new Quaternion(), transform);
+        
     }
 
     virtual protected void OnTriggerStay(Collider other)
@@ -31,27 +27,11 @@ public class Interactable : MonoBehaviour
         }
     }
 
-
     virtual protected void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(player.tag)) {
             player.GetComponent<Pickup>().SetItem(gameObject.GetComponent<Interactable>());
         }
-    }
-
-
-    virtual public void Interact() {
-        if (canPickUp) {
-            AddToInventory();
-            Destroy(gameObject, 0.1f);
-            canPickUp = false;
-        }
-        
-    }
-
-    virtual protected void AddToInventory()
-    {
-        Inventory.instance.Add(itemInfo);
     }
 
     virtual protected void OnDestroy()
@@ -69,8 +49,25 @@ public class Interactable : MonoBehaviour
             player.GetComponent<movement>().setCanPick(false);
         }
     }
-    public GameObject GetPlayer()
+
+    virtual public GameObject GetPlayer()
     {
         return player;
+    }
+
+    virtual protected void AddToInventory()
+    {
+        Inventory.instance.Add(itemInfo);
+    }
+
+    virtual public void Interact()
+    {
+        if (canPickUp)
+        {
+            AddToInventory();
+            Destroy(gameObject, 0.1f);
+            canPickUp = false;
+        }
+
     }
 }
