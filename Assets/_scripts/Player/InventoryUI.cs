@@ -23,11 +23,6 @@ public class InventoryUI : MonoBehaviour
 		slots = itemsParent.GetComponentsInChildren<InventorySlot>();
 		gameObject.SetActive(false);
 	}
-
-	private void Update()
-	{
-		
-	}
 	#endregion
 
 	#region Custom methods
