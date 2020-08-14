@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2c23947a8732749862bc90dd9cc0e2, type: 3}
   m_Name: 'Collect #1'
   m_EditorClassIdentifier: 
-  name: Collect1
-  icon: {fileID: 21300000, guid: 73ee0047368cd134286ecfb825393d17, type: 3}
+  name: 'Collect #1'
+  icon: {fileID: 21300000, guid: 4d524fbec1ad7524f8e44324e211e893, type: 3}

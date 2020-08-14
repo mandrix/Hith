@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2522773256c9b4e8e048b4a942082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  itemInfo: {fileID: 0}
+  minimapUI: {fileID: 0}
+  gasTankUI: {fileID: 0}
   loreText: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua
   loreUI: {fileID: 0}
@@ -28,10 +32,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2522773256c9b4e8e048b4a942082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  itemInfo: {fileID: 0}
+  minimapUI: {fileID: 0}
+  gasTankUI: {fileID: 0}
   loreText: "Por fin descifr\xE9 lo que me encontr\xE9 una vez: \xA1NO VAY\xC1S A
     LA PIR\xC1MIDE!"
   loreUI: {fileID: 0}
-  font: {fileID: 11400000, guid: 26687bc959392c14d9d526601d940165, type: 2}
+  font: {fileID: 0}
 --- !u!114 &7828072109390515210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,11 +52,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2522773256c9b4e8e048b4a942082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  itemInfo: {fileID: 0}
+  minimapUI: {fileID: 0}
+  gasTankUI: {fileID: 0}
   loreText: "Durante d\xEDas, meses, \xA1a\xF1os!, hizo un calor insoportable. De
     ni\xF1a, escuchaba gente diciendo c\xF3mo se derret\xEDan los zapatos en el suelo.
     \xA1No pod\xEDa creer que me pas\xF3 a m\xED! Claro, todo se puso peor\u2026"
   loreUI: {fileID: 0}
-  font: {fileID: 11400000, guid: 26687bc959392c14d9d526601d940165, type: 2}
+  font: {fileID: 0}
 --- !u!114 &7828072109401515408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,10 +73,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2522773256c9b4e8e048b4a942082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  itemInfo: {fileID: 0}
+  minimapUI: {fileID: 0}
+  gasTankUI: {fileID: 0}
   loreText: "Quedamos muy poco. No nos vamos de aqu\xED porque no hay un mejor lugar,
     \xA1todo est\xE1 igual! Aqu\xED hemos sobrevivido, podemos resistir un poco m\xE1s..."
   loreUI: {fileID: 0}
-  font: {fileID: 11400000, guid: 26687bc959392c14d9d526601d940165, type: 2}
+  font: {fileID: 0}
 --- !u!114 &7828072108449633953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,11 +93,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2522773256c9b4e8e048b4a942082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  itemInfo: {fileID: 0}
+  minimapUI: {fileID: 0}
+  gasTankUI: {fileID: 0}
   loreText: "A\xFAn hay agua, pero poca. La que hay, es muy poco potable. Las tensiones
     pol\xEDticas han crecido por la sed de control de tierras en las que crece cualquier
     alimento en todo el a\xF1o, y el control de nacientes de agua."
   loreUI: {fileID: 0}
-  font: {fileID: 11400000, guid: 26687bc959392c14d9d526601d940165, type: 2}
+  font: {fileID: 0}
 --- !u!114 &7828072109448915014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,11 +114,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2522773256c9b4e8e048b4a942082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  itemInfo: {fileID: 0}
+  minimapUI: {fileID: 0}
+  gasTankUI: {fileID: 0}
   loreText: "Huracanes. Nadie sabe el verdadero poder de estos hasta que vive uno
     de cerca; no import\xF3 vivir lejos del mar. Una fuerza terrible, pero asombrosa,
     porque es la forma que tiene el planeta para enfriarse."
   loreUI: {fileID: 0}
-  font: {fileID: 11400000, guid: 26687bc959392c14d9d526601d940165, type: 2}
+  font: {fileID: 0}
 --- !u!114 &7828072108663517844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,11 +135,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2522773256c9b4e8e048b4a942082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  itemInfo: {fileID: 0}
+  minimapUI: {fileID: 0}
+  gasTankUI: {fileID: 0}
   loreText: "La guerra fue inevitable, y lo es a\xFAn. El rompimiento de pactos internacionales
     gener\xF3, primero, problemas para las personas m\xE1s necesitadas. Luego, destrucci\xF3n
     de grandes ciudades. Por \xFAltimo, guerra nuclear."
   loreUI: {fileID: 0}
-  font: {fileID: 11400000, guid: 26687bc959392c14d9d526601d940165, type: 2}
+  font: {fileID: 0}
 --- !u!114 &7828072109631273542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,11 +156,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2522773256c9b4e8e048b4a942082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  itemInfo: {fileID: 0}
+  minimapUI: {fileID: 0}
+  gasTankUI: {fileID: 0}
   loreText: "No hay suficientes alimentos. El suelo no es apto para la siembra y el
     clima es completamente impredecible. La crisis de alimentos ha generados un problema
     econ\xF3mico muy fuerte en todo el planeta."
   loreUI: {fileID: 0}
-  font: {fileID: 11400000, guid: 26687bc959392c14d9d526601d940165, type: 2}
+  font: {fileID: 0}
 --- !u!114 &7828072109319856459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,11 +177,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2522773256c9b4e8e048b4a942082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  itemInfo: {fileID: 0}
+  minimapUI: {fileID: 0}
+  gasTankUI: {fileID: 0}
   loreText: "La radiaci\xF3n caus\xF3 cambios dr\xE1sticos: mutaciones visibles en
     animales y plantas, contaminaci\xF3n en el aire y se esperan cambios importantes
     en las personas."
   loreUI: {fileID: 0}
-  font: {fileID: 11400000, guid: 26687bc959392c14d9d526601d940165, type: 2}
+  font: {fileID: 0}
 --- !u!114 &7828072109860094164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,11 +198,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2522773256c9b4e8e048b4a942082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  itemInfo: {fileID: 0}
+  minimapUI: {fileID: 0}
+  gasTankUI: {fileID: 0}
   loreText: "Algunos de nosotros seguimos en H\xEEth. Ya nos acostumbramos al aire,
     pero no s\xE9 cu\xE1nto m\xE1s aguantemos. Si no es por enfermedades, los \xBFanimales?
     nos atacan desesperados por alimentos; nosotros no los podemos comer por la radiaci\xF3n."
   loreUI: {fileID: 0}
-  font: {fileID: 11400000, guid: 26687bc959392c14d9d526601d940165, type: 2}
+  font: {fileID: 0}
 --- !u!1 &7828072109546450016
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +597,8 @@ PrefabInstance:
       propertyPath: minDistanceForHighlight
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8821921887969033967, guid: 111d6e6e18745cc4285a4a738cb4c332, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 111d6e6e18745cc4285a4a738cb4c332, type: 3}
 --- !u!4 &6031887677388651396 stripped
 Transform:

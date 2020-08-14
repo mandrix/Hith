@@ -25,7 +25,7 @@ public class SpawnItem : MonoBehaviour
             }
             else
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
         }
     }
@@ -39,7 +39,7 @@ public class SpawnItem : MonoBehaviour
                 parent.gameObject.SetActive(false);
             }
             else {
-                Destroy(this);
+                Destroy(gameObject);
             }
         }
     }
