@@ -13,12 +13,6 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     private Item itemInfo;
 
-    
-    virtual protected void Start()
-    {
-        
-    }
-
     virtual protected void OnTriggerStay(Collider other)
     {
         if (other.CompareTag(player.tag))
@@ -68,6 +62,5 @@ public class Interactable : MonoBehaviour
             Destroy(gameObject, 0.1f);
             canPickUp = false;
         }
-
     }
 }

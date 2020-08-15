@@ -19,12 +19,6 @@ public class lore : Interactable
 	[SerializeField]
 	private TMPro.TMP_FontAsset font;
 
-
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     override public void Interact()
 	{
 		minimapUI.SetActive(false);

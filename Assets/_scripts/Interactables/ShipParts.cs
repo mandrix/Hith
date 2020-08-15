@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipParts : MonoBehaviour
+public class ShipParts : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [Header("Custom Variables")]
+    [SerializeField]
+    protected GameObject Ship;
+
+    override protected void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag(player.tag))
+        {
+            player.GetComponent<Pickup>().SetItem(gameObject.GetComponent<ShipParts>());
+        }
+    }
+
+    override public void Interact()
+    {
+        BuildShip();
+        base.Interact();
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private protected void BuildShip() {
+        //Ship.GetComponent<armarNave>().armar(itemInfo.name);
     }
+
 }

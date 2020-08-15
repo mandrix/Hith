@@ -123,11 +123,11 @@ public class sePuedeRecojer : MonoBehaviour
 	#region Custom methods
 	void AddToInventory()
     {
-
+        /*
         if (nombreDePieza != nombreDePiezas.lore)
 		{
 			bool wasPickedUp = Inventory.instance.Add(itemInfo);    // Add to inventory
-			nave.GetComponent<armarNave>().armar(nombreDePieza);	
+			//nave.GetComponent<armarNave>().armar(nombreDePieza);	
         }
         else
         {
@@ -160,7 +160,7 @@ public class sePuedeRecojer : MonoBehaviour
 
 
 		pickUp = false;
-		Destroy(gameObject, 0.10f);
+		Destroy(gameObject, 0.10f);*/
     }
 
     void stopAllAudio()

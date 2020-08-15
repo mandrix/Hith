@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class armarNave : MonoBehaviour
 {
+    /*
     public void armar(sePuedeRecojer.nombreDePiezas pieza)
 
 	{
@@ -33,5 +34,5 @@ public class armarNave : MonoBehaviour
             }
         }
         return isComplete;
-    }
+    }*/
 }
