@@ -21,9 +21,11 @@ public class switchScenes : MonoBehaviour
 
 	public void switchSceneAndRemoveSave(string name)
 	{
+        /*
 		es3File.Save<Vector3>("user-v3", Vector3.zero);
 		es3File.Save<float>("user-oxygen", 100f);
 		es3File.Save<List<sePuedeRecojer.nombreDePiezas>>("user-ship-parts", new List<sePuedeRecojer.nombreDePiezas>());
+        */
 		SceneManager.LoadScene(name);
 	}
 }

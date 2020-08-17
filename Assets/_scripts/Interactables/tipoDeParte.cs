@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class tipoDeParte : MonoBehaviour
 {
-	public sePuedeRecojer.nombreDePiezas nombreDePieza;
+	public string nombreDePieza;
 }
